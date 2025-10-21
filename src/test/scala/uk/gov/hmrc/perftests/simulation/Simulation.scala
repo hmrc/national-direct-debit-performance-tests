@@ -20,12 +20,30 @@ import uk.gov.hmrc.perftests.requests.Requests._
 
 class Simulation extends PerformanceTestRunner {
 
-  setup("setup-direct-debit", "Setup Direct Debit") withRequests
+  setup("setup-direct-debit-journey-ct", "Setup Direct Debit Journey With CT Payment Plan") withRequests
     (
       authLogIn,
       navigateToYourDDIPage,
       navigateToSetupDDPage,
-      navigateToSelectAccountPage
+      navigateToSelectAccountPage,
+      submitAccountType,
+      navigateToBankAccountPage,
+      enterBankAccountDetailsPage,
+      navigateToBankDetailsCYAPage,
+      submitBankDetails,
+      navigateToAuthorityConfirmPage,
+      submitAuthorityConfirmation,
+      navigateToPaymentOptionPage,
+      choosePaymentOption,
+      navigateToPaymentReferencePage,
+      enterPaymentReference,
+      navigateToPaymentAmountPage,
+      enterPaymentAmount,
+      navigateToPaymentDatePage,
+      enterPaymentDate,
+      navigateToDDCYAPage,
+      submitDDDetails,
+      navigateToDDConfirmationPage
     )
   runSimulation()
 }
