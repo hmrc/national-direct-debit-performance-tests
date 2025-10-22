@@ -25,7 +25,9 @@ class NDDSSimulation
   with OtherLiabilitySetupDirectDebitSimulation
   with PAYESetupDirectDebitSimulation
   with SDLTSetupDirectDebitSimulation
-  with VATSetupDirectDebitSimulation {
+  with VATSetupDirectDebitSimulation
+  with MGDSetupDirectDebitSimulation
+  with SASetupDirectDebitSimulation {
 
   runSimulation()
 

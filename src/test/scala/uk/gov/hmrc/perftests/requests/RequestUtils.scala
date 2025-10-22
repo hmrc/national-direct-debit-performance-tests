@@ -18,10 +18,12 @@ package uk.gov.hmrc.perftests.requests
 
 import io.gatling.core.Predef._
 import io.gatling.core.check.CheckBuilder
-import io.gatling.core.check.regex.{RegexCheckType}
+import io.gatling.core.check.regex.RegexCheckType
 import uk.gov.hmrc.perftests.requests.SetupDDRequests.baseUrlFor
 
 import java.io.InputStream
+import java.time.LocalDate
+import scala.util.Random
 
 trait RequestUtils {
 
@@ -39,6 +41,7 @@ trait RequestUtils {
   val paymentDate: String        = "/payment-date"
   val savedDDPayment: String     = "/your-saved-direct-debit-payment"
   val ddSubmission: String       = "/direct-debit-payment-submitted"
+  val paymentPlan: String        = "/payment-plan-type"
 
   val authLoginStub: String = baseUrlFor("auth-login-stub")
   val authLoginStubUrl      = s"$authLoginStub/auth-login-stub/gg-sign-in"
@@ -56,9 +59,23 @@ trait RequestUtils {
   val vatPaymentRef: String  = "562235945"
   val sdltPaymentRef: String = "100000511MX"
   val payePaymentRef: String = "961PX0023480X"
+  val mgdPaymentRef: String  = "XVM00005554321"
+  val saPaymentRef: String   = "5829820384K"
+  val tcPaymentRef: String   = "WT447571311207NE"
 
   def saveCsrfToken(): CheckBuilder[RegexCheckType, String] = regex(_ => CsrfPattern).saveAs("csrfToken")
 
   def saveUpscanUrl(): CheckBuilder[RegexCheckType, String] = regex(_ => UpscanUrlPattern).saveAs("upscanUrl")
 
+  def getRandomDateWithin30Days(): (String, String, String) = {
+    val today = LocalDate.now()
+    val randomDays = Random.nextInt(30) + 1 // Between 1 and 30 days
+    val futureDate = today.plusDays(randomDays)
+
+    val day   = f"${futureDate.getDayOfMonth}%02d"
+    val month = f"${futureDate.getMonthValue}%02d"
+    val year  = futureDate.getYear.toString
+
+    (day, month, year)
+  }
 }
