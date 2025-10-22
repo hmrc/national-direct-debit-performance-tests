@@ -142,11 +142,46 @@ object Requests extends ServicesConfiguration {
       .check(status.is(200))
       .check(regex("Where do you need to make direct debit payment?"))
 
-  val choosePaymentOption: HttpRequestBuilder =
+  val choosePaymentOptionCT: HttpRequestBuilder =
     http("Choose the payment Option")
       .post(s"$baseUrl$redirectUrl$choosePayment")
       .formParam("csrfToken", "#{csrfToken}")
       .formParam("value", "ct")
+      .check(status.is(303))
+
+  val choosePaymentOptionNIC: HttpRequestBuilder =
+    http("Choose the payment Option")
+      .post(s"$baseUrl$redirectUrl$choosePayment")
+      .formParam("csrfToken", "#{csrfToken}")
+      .formParam("value", "nic")
+      .check(status.is(303))
+
+  val choosePaymentOptionOL: HttpRequestBuilder =
+    http("Choose the payment Option")
+      .post(s"$baseUrl$redirectUrl$choosePayment")
+      .formParam("csrfToken", "#{csrfToken}")
+      .formParam("value", "otherLiability")
+      .check(status.is(303))
+
+  val choosePaymentOptionPAYE: HttpRequestBuilder =
+    http("Choose the payment Option")
+      .post(s"$baseUrl$redirectUrl$choosePayment")
+      .formParam("csrfToken", "#{csrfToken}")
+      .formParam("value", "paye")
+      .check(status.is(303))
+
+  val choosePaymentOptionSDLT: HttpRequestBuilder =
+    http("Choose the payment Option")
+      .post(s"$baseUrl$redirectUrl$choosePayment")
+      .formParam("csrfToken", "#{csrfToken}")
+      .formParam("value", "sdlt")
+      .check(status.is(303))
+
+  val choosePaymentOptionVAT: HttpRequestBuilder =
+    http("Choose the payment Option")
+      .post(s"$baseUrl$redirectUrl$choosePayment")
+      .formParam("csrfToken", "#{csrfToken}")
+      .formParam("value", "vat")
       .check(status.is(303))
 
   val navigateToPaymentReferencePage: HttpRequestBuilder =
@@ -156,11 +191,46 @@ object Requests extends ServicesConfiguration {
       .check(status.is(200))
       .check(regex("What is your payment reference"))
 
-  val enterPaymentReference: HttpRequestBuilder =
+  val enterCTPaymentReference: HttpRequestBuilder =
     http("Enter Payment Reference number")
       .post(s"$baseUrl$redirectUrl$paymentReference")
       .formParam("csrfToken", "#{csrfToken}")
       .formParam("value", "8337018376A00108A")
+      .check(status.is(303))
+
+  val enterOLPaymentReference: HttpRequestBuilder =
+    http("Enter Payment Reference number")
+      .post(s"$baseUrl$redirectUrl$paymentReference")
+      .formParam("csrfToken", "#{csrfToken}")
+      .formParam("value", "XG000001000188")
+      .check(status.is(303))
+
+  val enterPAYEPaymentReference: HttpRequestBuilder =
+    http("Enter Payment Reference number")
+      .post(s"$baseUrl$redirectUrl$paymentReference")
+      .formParam("csrfToken", "#{csrfToken}")
+      .formParam("value", "961PX0023480X")
+      .check(status.is(303))
+
+  val enterNICPaymentReference: HttpRequestBuilder =
+    http("Enter Payment Reference number")
+      .post(s"$baseUrl$redirectUrl$paymentReference")
+      .formParam("csrfToken", "#{csrfToken}")
+      .formParam("value", "600340016213526259")
+      .check(status.is(303))
+
+  val enterSDLTPaymentReference: HttpRequestBuilder =
+    http("Enter Payment Reference number")
+      .post(s"$baseUrl$redirectUrl$paymentReference")
+      .formParam("csrfToken", "#{csrfToken}")
+      .formParam("value", "100000511MX")
+      .check(status.is(303))
+
+  val enterVATPaymentReference: HttpRequestBuilder =
+    http("Enter Payment Reference number")
+      .post(s"$baseUrl$redirectUrl$paymentReference")
+      .formParam("csrfToken", "#{csrfToken}")
+      .formParam("value", "562235945")
       .check(status.is(303))
 
   val navigateToPaymentAmountPage: HttpRequestBuilder =
