@@ -17,14 +17,14 @@
 package uk.gov.hmrc.perftests.simulation
 
 import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
-import uk.gov.hmrc.perftests.requests.AuthLoginRequests.authLogIn
+import uk.gov.hmrc.perftests.requests.AuthLoginRequests.{authLogIn, navigateToAuth}
 import uk.gov.hmrc.perftests.requests.BankDetailsCYARequests.{navigateToBankDetailsCYAPage, submitBankDetails}
 import uk.gov.hmrc.perftests.requests.BankDetailsRequests.{enterBankAccountDetails, navigateToBankAccountPage}
 import uk.gov.hmrc.perftests.requests.ConfirmAuthorityRequests.{navigateToAuthorityConfirmPage, submitAuthorityConfirmation}
 import uk.gov.hmrc.perftests.requests.PaymentAmountRequests.{enterPaymentAmount, navigateToPaymentAmountPage}
 import uk.gov.hmrc.perftests.requests.PaymentCYARequests.{navigateToDDCYAPage, submitDDDetails}
 import uk.gov.hmrc.perftests.requests.PaymentConfirmationRequests.navigateToDDConfirmationPage
-import uk.gov.hmrc.perftests.requests.PaymentDateRequests.{enterPaymentDate, navigateToPaymentDatePage}
+import uk.gov.hmrc.perftests.requests.PaymentDateRequests.{enterPaymentDate, enterPaymentPeriod, navigateToPaymentDatePage, navigateToPaymentPeriodPage}
 import uk.gov.hmrc.perftests.requests.PaymentReferenceRequests.{enterPaymentRefNumber, navigateToPaymentReferencePage}
 import uk.gov.hmrc.perftests.requests.PaymentTypeRequests.{choosePaymentOption, navigateToPaymentOptionPage}
 import uk.gov.hmrc.perftests.requests.SelectAccountTypeRequests.{navigateToSelectAccountPage, submitAccountType}
@@ -34,7 +34,7 @@ trait PAYESetupDirectDebitSimulation {
   this: PerformanceTestRunner =>
   setup("setup-direct-debit-journey-paye", "PAYE-Setup Direct Debit Journey") withRequests
     (
-      authLogIn,
+      navigateToAuth,authLogIn(""),
       navigateToYourDDIPage,
       navigateToSetupDDPage,
       navigateToSelectAccountPage, submitAccountType,
@@ -43,6 +43,7 @@ trait PAYESetupDirectDebitSimulation {
       navigateToAuthorityConfirmPage, submitAuthorityConfirmation("yes"),
       navigateToPaymentOptionPage, choosePaymentOption("paye"),
       navigateToPaymentReferencePage, enterPaymentRefNumber(payePaymentRef),
+      navigateToPaymentPeriodPage,enterPaymentPeriod,
       navigateToPaymentAmountPage, enterPaymentAmount,
       navigateToPaymentDatePage, enterPaymentDate,
       navigateToDDCYAPage, submitDDDetails,
