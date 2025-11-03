@@ -20,6 +20,7 @@ import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import io.gatling.http.request.builder.HttpRequestBuilder
 import uk.gov.hmrc.performance.conf.ServicesConfiguration
+import uk.gov.hmrc.perftests.requests.SetupDDRequests.{redirectUrl, setupDDPayment}
 
 object PaymentPlanRequests extends ServicesConfiguration with RequestUtils {
 
@@ -36,4 +37,16 @@ object PaymentPlanRequests extends ServicesConfiguration with RequestUtils {
       .formParam("csrfToken", "#{csrfToken}")
       .formParam("value", paymentPlanTyoe)
       .check(status.is(303))
+
+  val redirectToSABudgetPPDetailsPage: HttpRequestBuilder =
+    http("Redirect to payment plan details page")
+      .get(s"$baseUrl$redirectUrl$saBudgetPaymentPlan")
+      .formParam("directDebitReference", "990550021")
+      .check(status.is(303))
+//      .check(regex("Summary Payment plan"))
+
+  val landOnSABudgetPPDetailsPage: HttpRequestBuilder =
+    http("Land to payment plan details page")
+      .get(s"$baseUrl$redirectUrl$paymentPlanSummaryPage")
+      .check(status.is(200))
 }
