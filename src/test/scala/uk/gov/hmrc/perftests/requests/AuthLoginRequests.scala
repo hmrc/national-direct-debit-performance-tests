@@ -26,17 +26,23 @@ object AuthLoginRequests extends ServicesConfiguration with RequestUtils {
   lazy val navigateToAuth: HttpRequestBuilder =
     http("Auth wizard")
       .get(SetupDDRequests.authLoginStubUrl)
+      .check(saveCsrfToken())
       .check(status.is(200))
       .check(regex("Authority Wizard").exists)
 
-  val authLogIn: HttpRequestBuilder =
+  def authLogIn(credID: String): HttpRequestBuilder =
     http("Login as an GG sign-in")
       .post(SetupDDRequests.authLoginStubUrl)
       .formParam("redirectionUrl", redirectUrl)
+      .formParam("csrfToken", "#{csrfToken}")
       .formParam("credentialStrength", "strong")
-      .formParam("authorityId", "")
+      .formParam("authorityId", credID)
       .formParam("confidenceLevel", "50")
       .formParam("affinityGroup", "Individual")
+      .formParam("enrolment[0].name", "IR-SA")
+      .formParam("enrolment[0].taxIdentifier[0].name", "NINO")
+      .formParam("enrolment[0].taxIdentifier[0].value", "AP123456")
+      .formParam("enrolment[0].state", "Activated")
       .check(status.is(303))
       .check(header("Location").is(redirectUrl))
 }

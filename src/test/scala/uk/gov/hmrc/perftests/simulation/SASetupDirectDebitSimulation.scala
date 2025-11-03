@@ -17,7 +17,7 @@
 package uk.gov.hmrc.perftests.simulation
 
 import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
-import uk.gov.hmrc.perftests.requests.AuthLoginRequests.authLogIn
+import uk.gov.hmrc.perftests.requests.AuthLoginRequests.{authLogIn, navigateToAuth}
 import uk.gov.hmrc.perftests.requests.BankDetailsCYARequests.{navigateToBankDetailsCYAPage, submitBankDetails}
 import uk.gov.hmrc.perftests.requests.BankDetailsRequests.{enterBankAccountDetails, navigateToBankAccountPage}
 import uk.gov.hmrc.perftests.requests.ConfirmAuthorityRequests.{navigateToAuthorityConfirmPage, submitAuthorityConfirmation}
@@ -35,7 +35,7 @@ trait SASetupDirectDebitSimulation {
   this: PerformanceTestRunner =>
   setup("setup-direct-debit-journey-sa-singlePPlan", "SA-Single Payment Plan-Setup DD Journey") withRequests
     (
-      authLogIn,
+      navigateToAuth,authLogIn(""),
       navigateToYourDDIPage,
       navigateToSetupDDPage,
       navigateToSelectAccountPage, submitAccountType,
@@ -53,7 +53,7 @@ trait SASetupDirectDebitSimulation {
 
   setup("setup-direct-debit-journey-sa-budgetPPlan", "SA-Budget Payment Plan-Setup DD Journey") withRequests
     (
-      authLogIn,
+      navigateToAuth,authLogIn(""),
       navigateToYourDDIPage,
       navigateToSetupDDPage,
       navigateToSelectAccountPage, submitAccountType,

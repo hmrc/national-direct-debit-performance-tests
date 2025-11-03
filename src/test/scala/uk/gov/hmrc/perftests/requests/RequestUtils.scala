@@ -42,6 +42,7 @@ trait RequestUtils {
   val savedDDPayment: String     = "/your-saved-direct-debit-payment"
   val ddSubmission: String       = "/direct-debit-payment-submitted"
   val paymentPlan: String        = "/payment-plan-type"
+  val paymentPeriod: String        = "/year-end-and-month"
 
   val authLoginStub: String = baseUrlFor("auth-login-stub")
   val authLoginStubUrl      = s"$authLoginStub/auth-login-stub/gg-sign-in"
@@ -69,7 +70,7 @@ trait RequestUtils {
 
   def getRandomDateWithin30Days(): (String, String, String) = {
     val today = LocalDate.now()
-    val randomDays = Random.nextInt(30) + 1 // Between 1 and 30 days
+    val randomDays = Random.nextInt(25) + 6 // Between 1 and 30 days
     val futureDate = today.plusDays(randomDays)
 
     val day   = f"${futureDate.getDayOfMonth}%02d"

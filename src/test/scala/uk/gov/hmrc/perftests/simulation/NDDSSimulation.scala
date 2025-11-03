@@ -27,7 +27,8 @@ class NDDSSimulation
   with SDLTSetupDirectDebitSimulation
   with VATSetupDirectDebitSimulation
   with MGDSetupDirectDebitSimulation
-  with SASetupDirectDebitSimulation {
+  with SASetupDirectDebitSimulation
+  with TCSetupDirectDebitSimulation {
 
   runSimulation()
 

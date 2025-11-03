@@ -30,12 +30,30 @@ object PaymentDateRequests extends ServicesConfiguration with RequestUtils {
       .check(status.is(200))
       .check(regex("What date are you making this payment?"))
 
+  val (day, month, year) = getRandomDateWithin30Days()
+
   val enterPaymentDate: HttpRequestBuilder =
     http("Enter payment date")
       .post(s"$baseUrl$redirectUrl$paymentDate")
       .formParam("csrfToken", "#{csrfToken}")
-      .formParam("value.day", "10")
-      .formParam("value.month", "10")
-      .formParam("value.year", "2026")
+      .formParam("value.day", day)
+      .formParam("value.month", month)
+      .formParam("value.year", year)
       .check(status.is(303))
+
+  val navigateToPaymentPeriodPage: HttpRequestBuilder =
+    http("Navigate to payment period page")
+      .get(s"$baseUrl$redirectUrl$paymentPeriod")
+      .check(saveCsrfToken())
+      .check(status.is(200))
+      .check(regex("What is the year end and month?"))
+
+  val enterPaymentPeriod: HttpRequestBuilder =
+    http("Enter payment period")
+      .post(s"$baseUrl$redirectUrl$paymentPeriod")
+      .formParam("csrfToken", "#{csrfToken}")
+      .formParam("value.year", year)
+      .formParam("value.month", month)
+      .check(status.is(303))
+
 }
