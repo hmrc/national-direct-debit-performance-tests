@@ -42,12 +42,25 @@ trait RequestUtils {
   val savedDDPayment: String     = "/your-saved-direct-debit-payment"
   val ddSubmission: String       = "/direct-debit-payment-submitted"
   val paymentPlan: String        = "/payment-plan-type"
-  val paymentPeriod: String        = "/year-end-and-month"
+  val paymentPeriod: String      = "/year-end-and-month"
 
-  val authLoginStub: String = baseUrlFor("auth-login-stub")
-  val authLoginStubUrl      = s"$authLoginStub/auth-login-stub/gg-sign-in"
-  val CsrfPattern           = """<input type="hidden" name="csrfToken" value="([^"]+)""""
-  val UpscanUrlPattern      = """<form action="([^"]+)" method="POST""""
+  val authLoginStub: String  = baseUrlFor("auth-login-stub")
+  val authLoginStubUrl       = s"$authLoginStub/auth-login-stub/gg-sign-in"
+  val CsrfPattern            = """<input type="hidden" name="csrfToken" value="([^"]+)""""
+  val UpscanUrlPattern       = """<form action="([^"]+)" method="POST""""
+  val saBudgetPaymentPlan    = "/payment-plan/direct-debit-redirect?directDebitReference=990550021"
+  val saBudgetPaymentPlanRef = "/your-payment-plan-details-redirect?paymentPlanReference=200000801"
+  val paymentPlanSummaryPage = "/payment-plan/dd-payment-plans-summary"
+  val paymentPlanDetailsPage = "/your-payment-plan-details"
+  val amendPaymentPlanPage   = "/amending-payment-plan"
+  val amountToBePaid         = "/amount-need-to-pay"
+  val paymentPlanEndDate     = "/date-ending-payment-plan"
+  val paymentPlanCYAPage     = "/payment-plan/confirm-new-payment-plan-details"
+  val confirmExistingPayment = "/confirm-new-payment-plan-details"
+  val amendAmountToBePaid    = "/change-payment-plan/amount-need-to-pay"
+  val amendEndDate           = "/change-payment-plan/date-ending-payment-plan"
+  val ppConfirmationPage     = "/payment-plan-amended"
+  val existingPP             = "/already-have-payment-plan"
 
   // Test Data
   val name: String          = "Teddy Dickson"
@@ -69,7 +82,7 @@ trait RequestUtils {
   def saveUpscanUrl(): CheckBuilder[RegexCheckType, String] = regex(_ => UpscanUrlPattern).saveAs("upscanUrl")
 
   def getRandomDateWithin30Days(): (String, String, String) = {
-    val today = LocalDate.now()
+    val today      = LocalDate.now()
     val randomDays = Random.nextInt(25) + 6 // Between 1 and 30 days
     val futureDate = today.plusDays(randomDays)
 

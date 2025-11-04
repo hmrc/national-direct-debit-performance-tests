@@ -36,6 +36,7 @@ trait MGDSetupDirectDebitSimulation {
   setup("setup-direct-debit-journey-mgd-singlePPlan", "MGD-Single Payment Plan-Setup DD Journey") withRequests
     (
       navigateToAuth,authLogIn(""),
+      navigateToYourDDIPage,
       navigateToSetupDDPage,
       navigateToSelectAccountPage, submitAccountType,
       navigateToBankAccountPage, enterBankAccountDetails(name, sortCode, accountNumber),
