@@ -20,41 +20,45 @@ import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
 import uk.gov.hmrc.perftests.requests.AmendPaymentPlanRequests._
 import uk.gov.hmrc.perftests.requests.AuthLoginRequests.{authLogIn, navigateToAuth}
 import uk.gov.hmrc.perftests.requests.PaymentPlanRequests.{landOnSABudgetPPDetailsPage, redirectToSABudgetPPDetailsPage}
+import uk.gov.hmrc.perftests.requests.SuspendPaymentPlanRequests.{confirmRemoveSuspension, navigateToRemoveSuspensionConfirmPage, navigateToRemoveSuspensionPage}
 import uk.gov.hmrc.perftests.requests.SetupDDRequests.navigateToYourDDIPage
 
-trait SAAmendPaymentSimulation {
+trait SASuspendPaymentSimulation {
   this: PerformanceTestRunner =>
-  setup("amend-payment-plan-journey-sa-budgetPPlan", "SA-Budget Payment Plan-Amend PP Journey") withRequests
+
+  setup("suspend-payment-plan-journey-sa-budgetPPlan", "SA-Budget Payment Plan-Suspend PP Journey") withRequests
     (
-      navigateToAuth,authLogIn("0000000009000204"),
+      navigateToAuth,authLogIn("0000000009000202"),
       navigateToYourDDIPage,
       redirectToSABudgetPPDetailsPage,
       landOnSABudgetPPDetailsPage,
       redirectToSABudgetPPRefPage,landOnSABudgetPPRefPage,
-      navigateToAmendPaymentPlanPage,
-      navigateToAmendAmountPage, enterAmendPaymentAmount,
-      navigateToPaymentPlanEndDatePage,submitPaymentPlanEndDate,
-      navigateToPaymentPlanCYAPage,
-      navigateToAmendAmountToBePaidPage,enterAmendPaymentAmount,
-      navigateToPaymentPlanEndDatePage,submitPaymentPlanEndDate,
-      navigateToPaymentPlanCYAPage,
-      navigateToAmendAEndDatePage,submitPaymentPlanEndDate,
-      navigateToPaymentPlanCYAPage,submitPaymentPlanDetails,
-      navigateToPaymentPlanConfirmPage
+      navigateToSuspendPaymentPlanPage,
+      navigateToSuspendPeriodPage,submitSuspendPeriodDetails,
+      navigateToCheckSuspendPeriodPage,confirmSuspendPeriod,
+      navigateToSuspendPPConfirmationPage
     )
 
-  setup("amend-payment-plan-journey-sa-singlePPlan", "SA-Single Payment Plan-Amend PP Journey") withRequests
+  setup("change-suspension-period-journey-sa-budgetPPlan", "SA-Budget Payment Plan-Change Suspension PP Journey") withRequests
     (
-      navigateToAuth,authLogIn("0000000009000205"),
+      navigateToAuth,authLogIn("0000000009000206"),
       navigateToYourDDIPage,
       redirectToSABudgetPPDetailsPage,
       landOnSABudgetPPDetailsPage,
       redirectToSABudgetPPRefPage,landOnSABudgetPPRefPage,
-      navigateToAmendPaymentPlanPage,
-      navigateToAmendAmountPage, enterAmendPaymentAmount,
-      navigateToPaymentPlanEndDatePage,submitPaymentPlanEndDate,
-      navigateToExistingPPQpage,submitExistingPPDetailS,
-      navigateToExistingPaymentPlanCYAPage,submitPaymentPlanDetails,
-      navigateToPaymentPlanConfirmPage
+      navigateToChangeSuspendPeriodPage,submitSuspendPeriodDetails,
+      navigateToCheckSuspendPeriodPage,confirmSuspendPeriod,
+      navigateToSuspendPPConfirmationPage
+    )
+
+  setup("remove-suspension-period-journey-sa-budgetPPlan", "SA-Budget Payment Plan-Remove Suspension PP Journey") withRequests
+    (
+      navigateToAuth,authLogIn("0000000009000206"),
+      navigateToYourDDIPage,
+      redirectToSABudgetPPDetailsPage,
+      landOnSABudgetPPDetailsPage,
+      redirectToSABudgetPPRefPage,landOnSABudgetPPRefPage,
+      navigateToRemoveSuspensionPage,confirmRemoveSuspension,
+      navigateToRemoveSuspensionConfirmPage
     )
 }

@@ -30,7 +30,7 @@ object PaymentDateRequests extends ServicesConfiguration with RequestUtils {
       .check(status.is(200))
       .check(regex("What date are you making this payment?"))
 
-  val (day, month, year) = getRandomDateWithin30Days()
+  val (day, month, year) = getRandomDateWithin30Days
 
   val enterPaymentDate: HttpRequestBuilder =
     http("Enter payment date")

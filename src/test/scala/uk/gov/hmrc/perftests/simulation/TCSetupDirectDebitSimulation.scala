@@ -50,22 +50,4 @@ trait TCSetupDirectDebitSimulation {
       navigateToDDCYAPage, submitDDDetails,
       navigateToDDConfirmationPage
     )
-
-  setup("setup-direct-debit-journey-tc-repaymentPlan", "TC-Repayment Plan-Setup DD Journey") withRequests
-    (
-      navigateToAuth,authLogIn(""),
-      navigateToYourDDIPage,
-      navigateToSetupDDPage,
-      navigateToSelectAccountPage, submitAccountType,
-      navigateToBankAccountPage, enterBankAccountDetails(name, sortCode, accountNumber),
-      navigateToBankDetailsCYAPage, submitBankDetails,
-      navigateToAuthorityConfirmPage, submitAuthorityConfirmation("yes"),
-      navigateToPaymentOptionPage, choosePaymentOption("tc"),
-      navigateToPaymentPlanPage, choosePaymentPlan("taxCreditRepaymentPlan"),
-      navigateToPaymentReferencePage, enterPaymentRefNumber(tcPaymentRef),
-      navigateToPaymentAmountPage, enterPaymentAmount,
-      navigateToPaymentDatePage, enterPaymentDate,
-      navigateToDDCYAPage, submitDDDetails,
-      navigateToDDConfirmationPage
-    )
 }
