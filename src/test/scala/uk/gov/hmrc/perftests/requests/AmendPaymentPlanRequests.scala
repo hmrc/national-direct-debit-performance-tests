@@ -48,7 +48,7 @@ object AmendPaymentPlanRequests extends ServicesConfiguration with RequestUtils 
       .check(status.is(200))
       .check(regex("What date are you ending this payment plan?"))
 
-  val (day, month, year) = getRandomDateWithin30Days()
+  val (day, month, year) = getRandomDateWithin30Days
 
   val submitPaymentPlanEndDate: HttpRequestBuilder =
     http("Enter payment plan end date")
@@ -125,5 +125,62 @@ object AmendPaymentPlanRequests extends ServicesConfiguration with RequestUtils 
       .post(s"$baseUrl$redirectUrl$confirmExistingPayment")
       .formParam("csrfToken", "#{csrfToken}")
       .check(status.is(303))
+
+
+
+
+  val navigateToSuspendPaymentPlanPage: HttpRequestBuilder =
+    http("Navigate to suspend payment plan page")
+      .get(s"$baseUrl$redirectUrl$suspendPaymentPlanPage")
+      .check(status.is(200))
+      .check(regex("Suspending this payment plan"))
+
+  val navigateToSuspendPeriodPage: HttpRequestBuilder =
+    http("Navigate to suspend period page")
+      .get(s"$baseUrl$redirectUrl$suspendPeriodPage")
+      .check(status.is(200))
+      .check(saveCsrfToken())
+      .check(regex("Enter suspension dates"))
+
+  val ((startDay, startMonth, startYear), (endDay, endMonth, endYear)) = getStartAndEndDate
+
+  val submitSuspendPeriodDetails: HttpRequestBuilder =
+    http("Enter suspend payment plan start and end dates")
+      .post(s"$baseUrl$redirectUrl$suspendPeriodPage")
+      .formParam("csrfToken", "#{csrfToken}")
+      .formParam("suspensionPeriodRangeStartDate.day", startDay)
+      .formParam("suspensionPeriodRangeStartDate.month", startMonth)
+      .formParam("suspensionPeriodRangeStartDate.year", startYear)
+      .formParam("suspensionPeriodRangeEndDate.day", endDay)
+      .formParam("suspensionPeriodRangeEndDate.month", endMonth)
+      .formParam("suspensionPeriodRangeEndDate.year", endYear)
+      .check(status.is(303))
+
+  val navigateToCheckSuspendPeriodPage: HttpRequestBuilder =
+    http("Navigate to check suspend period page")
+      .get(s"$baseUrl$redirectUrl$checkSuspendPeriod")
+      .check(saveCsrfToken())
+      .check(status.is(200))
+      .check(regex("Check your suspension details"))
+
+  val confirmSuspendPeriod: HttpRequestBuilder =
+    http("Submit suspend period details")
+      .post(s"$baseUrl$redirectUrl$checkSuspendPeriod")
+      .formParam("csrfToken", "#{csrfToken}")
+      .check(status.is(303))
+
+  val navigateToSuspendPPConfirmationPage: HttpRequestBuilder =
+    http("Navigate to suspend payment plan confirmation page")
+      .get(s"$baseUrl$redirectUrl$suspendConfirmPage")
+      .formParam("csrfToken", "#{csrfToken}")
+      .check(status.is(200))
+      .check(regex("Payment plan suspended"))
+
+  val navigateToChangeSuspendPeriodPage: HttpRequestBuilder =
+    http("Navigate to change suspend payment plan dates page")
+      .get(s"$baseUrl$redirectUrl$suspendPeriodPage")
+      .check(saveCsrfToken())
+      .check(status.is(200))
+      .check(regex("Enter suspension dates"))
 
 }

@@ -20,8 +20,6 @@ import io.gatling.core.Predef._
 import io.gatling.core.check.CheckBuilder
 import io.gatling.core.check.regex.RegexCheckType
 import uk.gov.hmrc.perftests.requests.SetupDDRequests.baseUrlFor
-
-import java.io.InputStream
 import java.time.LocalDate
 import scala.util.Random
 
@@ -44,23 +42,31 @@ trait RequestUtils {
   val paymentPlan: String        = "/payment-plan-type"
   val paymentPeriod: String      = "/year-end-and-month"
 
-  val authLoginStub: String  = baseUrlFor("auth-login-stub")
-  val authLoginStubUrl       = s"$authLoginStub/auth-login-stub/gg-sign-in"
-  val CsrfPattern            = """<input type="hidden" name="csrfToken" value="([^"]+)""""
-  val UpscanUrlPattern       = """<form action="([^"]+)" method="POST""""
-  val saBudgetPaymentPlan    = "/payment-plan/direct-debit-redirect?directDebitReference=990550021"
-  val saBudgetPaymentPlanRef = "/your-payment-plan-details-redirect?paymentPlanReference=200000801"
-  val paymentPlanSummaryPage = "/payment-plan/dd-payment-plans-summary"
-  val paymentPlanDetailsPage = "/your-payment-plan-details"
-  val amendPaymentPlanPage   = "/amending-payment-plan"
-  val amountToBePaid         = "/amount-need-to-pay"
-  val paymentPlanEndDate     = "/date-ending-payment-plan"
-  val paymentPlanCYAPage     = "/payment-plan/confirm-new-payment-plan-details"
-  val confirmExistingPayment = "/confirm-new-payment-plan-details"
-  val amendAmountToBePaid    = "/change-payment-plan/amount-need-to-pay"
-  val amendEndDate           = "/change-payment-plan/date-ending-payment-plan"
-  val ppConfirmationPage     = "/payment-plan-amended"
-  val existingPP             = "/already-have-payment-plan"
+  val authLoginStub: String   = baseUrlFor("auth-login-stub")
+  val authLoginStubUrl        = s"$authLoginStub/auth-login-stub/gg-sign-in"
+  val CsrfPattern             = """<input type="hidden" name="csrfToken" value="([^"]+)""""
+  val UpscanUrlPattern        = """<form action="([^"]+)" method="POST""""
+  val saBudgetPaymentPlan     = "/payment-plan/direct-debit-redirect?directDebitReference=990550021"
+  val saBudgetPaymentPlanRef  = "/your-payment-plan-details-redirect?paymentPlanReference=200000801"
+  val paymentPlanSummaryPage  = "/payment-plan/dd-payment-plans-summary"
+  val paymentPlanDetailsPage  = "/your-payment-plan-details"
+  val amendPaymentPlanPage    = "/amending-payment-plan"
+  val amountToBePaid          = "/amount-need-to-pay"
+  val paymentPlanEndDate      = "/date-ending-payment-plan"
+  val paymentPlanCYAPage      = "/payment-plan/confirm-new-payment-plan-details"
+  val confirmExistingPayment  = "/confirm-new-payment-plan-details"
+  val amendAmountToBePaid     = "/change-payment-plan/amount-need-to-pay"
+  val amendEndDate            = "/change-payment-plan/date-ending-payment-plan"
+  val ppConfirmationPage      = "/payment-plan-amended"
+  val existingPP              = "/already-have-payment-plan"
+  val cancelPaymentPlanPage   = "/cancel-payment-plan"
+  val cancelConfirmPage       = "/payment-plan-cancelled"
+  val suspendPaymentPlanPage  = "/suspending-this-payment-plan"
+  val suspendPeriodPage       = "/how-long-suspension-period-last"
+  val checkSuspendPeriod      = "/check-suspension-details"
+  val suspendConfirmPage      = "/payment-plan-suspended"
+  val removeSuspension        = "/removing-this-suspension"
+  val removeSuspensionConfirm = "/payment-plan-suspension-removed"
 
   // Test Data
   val name: String          = "Teddy Dickson"
@@ -81,7 +87,7 @@ trait RequestUtils {
 
   def saveUpscanUrl(): CheckBuilder[RegexCheckType, String] = regex(_ => UpscanUrlPattern).saveAs("upscanUrl")
 
-  def getRandomDateWithin30Days(): (String, String, String) = {
+  def getRandomDateWithin30Days: (String, String, String) = {
     val today      = LocalDate.now()
     val randomDays = Random.nextInt(25) + 6 // Between 1 and 30 days
     val futureDate = today.plusDays(randomDays)
@@ -92,4 +98,22 @@ trait RequestUtils {
 
     (day, month, year)
   }
+
+  def getStartAndEndDate: ((String, String, String), (String, String, String)) = {
+    val today      = LocalDate.now()
+    val randomDays = Random.nextInt(25) + 6 // Between 6 and 30 days
+    val startDate  = today.plusDays(randomDays)
+    val endDate    = startDate.plusMonths(3)
+
+    val startDay   = f"${startDate.getDayOfMonth}%02d"
+    val startMonth = f"${startDate.getMonthValue}%02d"
+    val startYear  = startDate.getYear.toString
+
+    val endDay   = f"${endDate.getDayOfMonth}%02d"
+    val endMonth = f"${endDate.getMonthValue}%02d"
+    val endYear  = endDate.getYear.toString
+
+    ((startDay, startMonth, startYear), (endDay, endMonth, endYear))
+  }
+
 }

@@ -19,17 +19,19 @@ package uk.gov.hmrc.perftests.simulation
 import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
 
 class NDDSSimulation
-  extends PerformanceTestRunner
-  with CTSetupDirectDebitSimulation
-  with NICSetupDirectDebitSimulation
-  with OtherLiabilitySetupDirectDebitSimulation
-  with PAYESetupDirectDebitSimulation
-  with SDLTSetupDirectDebitSimulation
-  with VATSetupDirectDebitSimulation
-  with MGDSetupDirectDebitSimulation
-  with SASetupDirectDebitSimulation
-  with TCSetupDirectDebitSimulation
-  with SAAmendPaymentSimulation {
+    extends PerformanceTestRunner
+    with CTSetupDirectDebitSimulation
+    with NICSetupDirectDebitSimulation
+    with OtherLiabilitySetupDirectDebitSimulation
+    with PAYESetupDirectDebitSimulation
+    with SDLTSetupDirectDebitSimulation
+    with VATSetupDirectDebitSimulation
+    with MGDSetupDirectDebitSimulation
+    with SASetupDirectDebitSimulation
+    with TCSetupDirectDebitSimulation
+    with SAAmendPaymentSimulation
+    with SACancelPaymentSimulation
+    with SASuspendPaymentSimulation {
 
   runSimulation()
 
