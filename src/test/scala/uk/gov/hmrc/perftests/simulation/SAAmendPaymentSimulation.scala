@@ -26,7 +26,7 @@ trait SAAmendPaymentSimulation {
   this: PerformanceTestRunner =>
   setup("amend-payment-plan-journey-sa-budgetPPlan", "SA-Budget Payment Plan-Amend PP Journey") withRequests
     (
-      navigateToAuth,authLogIn("0000000009000204"),
+      navigateToAuth,authLogIn(generateCredId("2b6")),
       navigateToYourDDIPage,
       redirectToSABudgetPPDetailsPage,
       landOnSABudgetPPDetailsPage,
@@ -45,7 +45,7 @@ trait SAAmendPaymentSimulation {
 
   setup("amend-payment-plan-journey-sa-singlePPlan", "SA-Single Payment Plan-Amend PP Journey") withRequests
     (
-      navigateToAuth,authLogIn("0000000009000205"),
+      navigateToAuth,authLogIn(generateCredId("1a5")),
       navigateToYourDDIPage,
       redirectToSABudgetPPDetailsPage,
       landOnSABudgetPPDetailsPage,
