@@ -28,7 +28,7 @@ object PaymentAmountRequests extends ServicesConfiguration with RequestUtils {
       .get(s"$baseUrl$redirectUrl$paymentAmount")
       .check(saveCsrfToken())
       .check(status.is(200))
-      .check(regex("What amount do you want to pay?"))
+      .check(regex("How much do you want to pay, in pounds?"))
 
   val enterPaymentAmount: HttpRequestBuilder =
     http("Enter Payment amount")
