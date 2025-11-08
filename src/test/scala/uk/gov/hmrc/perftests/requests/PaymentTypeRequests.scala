@@ -28,7 +28,7 @@ object PaymentTypeRequests extends ServicesConfiguration with RequestUtils {
       .get(s"$baseUrl$redirectUrl$choosePayment")
       .check(saveCsrfToken())
       .check(status.is(200))
-      .check(regex("Where do you need to make direct debit payment?"))
+      .check(regex("Which tax or duty is this payment plan for?"))
 
   def choosePaymentOption(paymentOption: String): HttpRequestBuilder =
     http("Choose the payment Option")
