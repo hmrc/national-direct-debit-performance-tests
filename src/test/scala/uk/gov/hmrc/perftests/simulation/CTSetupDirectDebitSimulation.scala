@@ -35,8 +35,8 @@ trait CTSetupDirectDebitSimulation {
   this: PerformanceTestRunner =>
   setup("setup-direct-debit-journey-ct", "CT-Setup Direct Debit Journey") withRequests
     (
-      navigateToAuth,authLogIn(generateCredId("7g0")),
-      navigateToDDPage,
+      navigateToAuth,authLogIn(""),
+      navigateToYourDDIPage,
       navigateToSetupDDPage,
       navigateToSelectAccountPage, submitAccountType,
       navigateToBankAccountPage, enterBankAccountDetails(name,sortCode,accountNumber),
