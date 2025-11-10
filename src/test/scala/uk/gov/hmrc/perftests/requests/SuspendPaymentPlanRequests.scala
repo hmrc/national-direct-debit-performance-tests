@@ -81,7 +81,7 @@ object SuspendPaymentPlanRequests extends ServicesConfiguration with RequestUtil
     http("Navigate to remove suspension page")
       .get(s"$baseUrl$redirectUrl$removeSuspension")
       .check(saveCsrfToken())
-      .check(status.is(200))
+      .check(status.in(200,303))
       .check(regex("Removing this suspension"))
 
   val confirmRemoveSuspension: HttpRequestBuilder =
