@@ -53,7 +53,7 @@ trait SASuspendPaymentSimulation {
 
   setup("remove-suspension-period-journey-sa-budgetPPlan", "SA-Budget Payment Plan-Remove Suspension PP Journey") withRequests
     (
-      navigateToAuth,authLogIn(generateCredId("4d8")),
+      navigateToAuth,authLogIn(generateCredId("6f0")),
       navigateToYourDDIPage,
       redirectToSABudgetPPDetailsPage,
       landOnSABudgetPPDetailsPage,
