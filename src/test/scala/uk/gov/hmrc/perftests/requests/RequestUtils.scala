@@ -116,18 +116,16 @@ trait RequestUtils {
     ((startDay, startMonth, startYear), (endDay, endMonth, endYear))
   }
 
-
   def generateCredId(suffix: String): String = {
     val totalLength = 16
     val hexChars = "0123456789abcdef"
-
     require(suffix.length < totalLength, "Suffix must be shorter than total length")
-
     val randomPartLength = totalLength - suffix.length
     val randomPart = (1 to randomPartLength)
       .map(_ => hexChars(scala.util.Random.nextInt(hexChars.length)))
       .mkString
-
-    randomPart + suffix
+    val credId = randomPart + suffix
+    println("CredIDs: " + credId)
+    credId
   }
 }

@@ -30,13 +30,13 @@ object AuthLoginRequests extends ServicesConfiguration with RequestUtils {
       .check(status.is(200))
       .check(regex("Authority Wizard").exists)
 
-  def authLogIn(credID: String): HttpRequestBuilder =
+  def authLogIn(suffix: String): HttpRequestBuilder =
     http("Login as an GG sign-in")
       .post(SetupDDRequests.authLoginStubUrl)
       .formParam("redirectionUrl", redirectUrl)
       .formParam("csrfToken", "#{csrfToken}")
       .formParam("credentialStrength", "strong")
-      .formParam("authorityId", credID)
+      .formParam("authorityId", (_: io.gatling.core.session.Session) => generateCredId(suffix))
       .formParam("confidenceLevel", "50")
       .formParam("affinityGroup", "Individual")
       .formParam("enrolment[0].name", "IR-SA")

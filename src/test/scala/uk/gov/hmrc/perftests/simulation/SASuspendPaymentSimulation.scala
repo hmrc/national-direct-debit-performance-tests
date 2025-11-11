@@ -28,7 +28,7 @@ trait SASuspendPaymentSimulation {
 
   setup("suspend-payment-plan-journey-sa-budgetPPlan", "SA-Budget Payment Plan-Suspend PP Journey") withRequests
     (
-      navigateToAuth,authLogIn(generateCredId("2b6")),
+      navigateToAuth,authLogIn("2b6"),
       navigateToYourDDIPage,
       redirectToSABudgetPPDetailsPage,
       landOnSABudgetPPDetailsPage,
@@ -41,7 +41,7 @@ trait SASuspendPaymentSimulation {
 
   setup("change-suspension-period-journey-sa-budgetPPlan", "SA-Budget Payment Plan-Change Suspension PP Journey") withRequests
     (
-      navigateToAuth,authLogIn(generateCredId("4d8")),
+      navigateToAuth,authLogIn("4d8"),
       navigateToYourDDIPage,
       redirectToSABudgetPPDetailsPage,
       landOnSABudgetPPDetailsPage,
@@ -53,7 +53,7 @@ trait SASuspendPaymentSimulation {
 
   setup("remove-suspension-period-journey-sa-budgetPPlan", "SA-Budget Payment Plan-Remove Suspension PP Journey") withRequests
     (
-      navigateToAuth,authLogIn(generateCredId("6f0")),
+      navigateToAuth,authLogIn("6f0"),
       navigateToYourDDIPage,
       redirectToSABudgetPPDetailsPage,
       landOnSABudgetPPDetailsPage,
