@@ -25,22 +25,23 @@ import scala.util.Random
 
 trait RequestUtils {
 
-  val baseUrl: String            = baseUrlFor("ndds-frontend")
-  val redirectUrl: String        = "/direct-debits"
-  val yourDDPayment: String      = "/your-direct-debit-payment"
-  val setupDDPayment: String     = "/set-up-direct-debit-payment"
-  val selectAccountType: String  = "/personal-or-business-account"
-  val bankAccountPage: String    = "/your-bank-details"
-  val confirmBankDetails: String = "/confirm-bank-details"
-  val confirmAuthority: String   = "/confirm-authority"
-  val choosePayment: String      = "/which-tax-duty-payment-plan"
-  val paymentReference: String   = "/payment-reference"
-  val paymentAmount: String      = "/how-much-want-to-pay"
-  val paymentDate: String        = "/payment-date"
-  val savedDDPayment: String     = "/your-saved-direct-debit-payment"
-  val ddSubmission: String       = "/direct-debit-payment-submitted"
-  val paymentPlan: String        = "/payment-plan-type"
-  val paymentPeriod: String      = "/year-end-and-month"
+  val baseUrl: String              = baseUrlFor("ndds-frontend")
+  val redirectUrl: String          = "/direct-debits"
+  val yourDDPayment: String        = "/your-direct-debit-payment"
+  val yourDDPayment2ndPage: String = "your-direct-debit-payment?page=2"
+  val setupDDPayment: String       = "/set-up-direct-debit-payment"
+  val selectAccountType: String    = "/personal-or-business-account"
+  val bankAccountPage: String      = "/your-bank-details"
+  val confirmBankDetails: String   = "/confirm-bank-details"
+  val confirmAuthority: String     = "/confirm-authority"
+  val choosePayment: String        = "/which-tax-duty-payment-plan"
+  val paymentReference: String     = "/payment-reference"
+  val paymentAmount: String        = "/how-much-want-to-pay"
+  val paymentDate: String          = "/payment-date"
+  val savedDDPayment: String       = "/your-saved-direct-debit-payment"
+  val ddSubmission: String         = "/direct-debit-payment-submitted"
+  val paymentPlan: String          = "/payment-plan-type"
+  val paymentPeriod: String        = "/year-end-and-month"
 
   val authLoginStub: String   = baseUrlFor("auth-login-stub")
   val authLoginStubUrl        = s"$authLoginStub/auth-login-stub/gg-sign-in"
@@ -117,14 +118,14 @@ trait RequestUtils {
   }
 
   def generateCredId(suffix: String): String = {
-    val totalLength = 16
-    val hexChars = "0123456789abcdef"
+    val totalLength      = 16
+    val hexChars         = "0123456789abcdef"
     require(suffix.length < totalLength, "Suffix must be shorter than total length")
     val randomPartLength = totalLength - suffix.length
-    val randomPart = (1 to randomPartLength)
+    val randomPart       = (1 to randomPartLength)
       .map(_ => hexChars(scala.util.Random.nextInt(hexChars.length)))
       .mkString
-    val credId = randomPart + suffix
+    val credId           = randomPart + suffix
     println("CredIDs: " + credId)
     credId
   }

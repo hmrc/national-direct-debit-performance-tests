@@ -40,4 +40,11 @@ object SetupDDRequests extends ServicesConfiguration with RequestUtils {
       .get(s"$baseUrl$redirectUrl$setupDDPayment")
       .check(status.is(200))
       .check(regex("Set up a Direct Debit payment"))
+
+  val navigateToSecondDDIPage: HttpRequestBuilder =
+    http("Navigate to Direct Debit Instructions second page")
+      .get(s"$baseUrl$redirectUrl$yourDDPayment2ndPage")
+      .formParam("page", "2")
+      .check(status.is(200))
+      .check(regex("Your Direct Debit instructions"))
 }
