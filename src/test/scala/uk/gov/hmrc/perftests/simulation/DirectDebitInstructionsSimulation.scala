@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 HM Revenue & Customs
+ * Copyright 2023 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,23 +17,15 @@
 package uk.gov.hmrc.perftests.simulation
 
 import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
+import uk.gov.hmrc.perftests.requests.AuthLoginRequests.{authLogIn, navigateToAuth}
+import uk.gov.hmrc.perftests.requests.SetupDDRequests._
 
-class NDDSSimulation
-    extends PerformanceTestRunner
-    with CTSetupDirectDebitSimulation
-    with NICSetupDirectDebitSimulation
-    with OtherLiabilitySetupDirectDebitSimulation
-    with PAYESetupDirectDebitSimulation
-    with SDLTSetupDirectDebitSimulation
-    with VATSetupDirectDebitSimulation
-    with MGDSetupDirectDebitSimulation
-    with SASetupDirectDebitSimulation
-    with TCSetupDirectDebitSimulation
-    with SAAmendPaymentSimulation
-    with SACancelPaymentSimulation
-    with SASuspendPaymentSimulation
-    with DirectDebitInstructionsSimulation {
-
-  runSimulation()
-
+trait DirectDebitInstructionsSimulation {
+  this: PerformanceTestRunner =>
+  setup("direct-debit-instructions-pagination-journey", "Direct Debit Instructions Pagination Journey") withRequests
+    (
+      navigateToAuth,authLogIn("8h1"),
+      navigateToYourDDIPage,
+      navigateToSecondDDIPage
+    )
 }
