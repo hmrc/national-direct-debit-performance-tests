@@ -40,7 +40,7 @@ trait RequestUtils {
   val paymentDate: String          = "/payment-date"
   val savedDDPayment: String       = "/your-saved-direct-debit-payment"
   val ddSubmission: String         = "/direct-debit-payment-submitted"
-  val paymentPlan: String          = "/payment-plan-type"
+  val paymentPlan: String          = "/what-type-payment-plan-selecting"
   val paymentPeriod: String        = "/year-end-and-month"
 
   val authLoginStub: String   = baseUrlFor("auth-login-stub")
