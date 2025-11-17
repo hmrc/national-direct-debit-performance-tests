@@ -28,7 +28,7 @@ trait RequestUtils {
   val baseUrl: String              = baseUrlFor("ndds-frontend")
   val redirectUrl: String          = "/direct-debits"
   val yourDDPayment: String        = "/your-direct-debit-payment"
-  val yourDDPayment2ndPage: String = "your-direct-debit-payment?page=2"
+  val yourDDPayment2ndPage: String = "/your-direct-debit-payment?page=2"
   val setupDDPayment: String       = "/set-up-direct-debit-payment"
   val selectAccountType: String    = "/personal-or-business-account"
   val bankAccountPage: String      = "/your-bank-details"
