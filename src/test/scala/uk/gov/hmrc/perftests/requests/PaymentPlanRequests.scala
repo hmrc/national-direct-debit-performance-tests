@@ -47,6 +47,6 @@ object PaymentPlanRequests extends ServicesConfiguration with RequestUtils {
 
   val landOnSABudgetPPDetailsPage: HttpRequestBuilder =
     http("Land to payment plan details page")
-      .get(s"$baseUrl$redirectUrl$paymentPlanSummaryPage")
+      .get(s"$baseUrl$redirectUrl$saBudgetPaymentPlan")
       .check(status.is(200))
 }
