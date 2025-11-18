@@ -47,7 +47,7 @@ trait RequestUtils {
   val authLoginStubUrl        = s"$authLoginStub/auth-login-stub/gg-sign-in"
   val CsrfPattern             = """<input type="hidden" name="csrfToken" value="([^"]+)""""
   val UpscanUrlPattern        = """<form action="([^"]+)" method="POST""""
-  val saBudgetPaymentPlan     = "/payment-plan/direct-debit-redirect?directDebitReference=990550021"
+  val saBudgetPaymentPlan     = "/payment-plan/direct-debit-redirect?directDebitReference=99055021"
   val saBudgetPaymentPlanRef  = "/your-payment-plan-details-redirect?paymentPlanReference=200000801"
   val paymentPlanSummaryPage  = "/payment-plan/dd-payment-plans-summary"
   val paymentPlanDetailsPage  = "/your-payment-plan-details"
