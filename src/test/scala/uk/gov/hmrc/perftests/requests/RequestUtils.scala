@@ -49,7 +49,7 @@ trait RequestUtils {
   val UpscanUrlPattern        = """<form action="([^"]+)" method="POST""""
   val saBudgetPaymentPlan     = "/payment-plan/direct-debit-redirect?directDebitReference=99055021"
   val saBudgetPaymentPlanRef  = "/your-payment-plan-details-redirect?paymentPlanReference=200000801"
-  val paymentPlanSummaryPage  = "/payment-plan/dd-payment-plans-summary"
+  val paymentPlanSummaryPage  = "/payment-plan/payment-plans-direct-debit"
   val paymentPlanDetailsPage  = "/your-payment-plan-details"
   val amendPaymentPlanPage    = "/amending-payment-plan"
   val amountToBePaid          = "/amount-need-to-pay"
