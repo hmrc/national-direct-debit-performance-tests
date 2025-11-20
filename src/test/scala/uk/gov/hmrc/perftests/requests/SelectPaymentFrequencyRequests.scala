@@ -21,27 +21,19 @@ import io.gatling.http.Predef._
 import io.gatling.http.request.builder.HttpRequestBuilder
 import uk.gov.hmrc.performance.conf.ServicesConfiguration
 
-object CancelPaymentPlanRequests extends ServicesConfiguration with RequestUtils {
+object SelectPaymentFrequencyRequests extends ServicesConfiguration with RequestUtils {
 
-  val navigateToCancelPaymentPlanPage: HttpRequestBuilder =
-    http("Navigate to cancel payment plan page")
-      .get(s"$baseUrl$redirectUrl$cancelPaymentPlanPage")
-      .check(status.is(200))
+  val navigateToPaymentFrequencyPage: HttpRequestBuilder =
+    http("Navigate to Payment frequency page")
+      .get(s"$baseUrl$redirectUrl$selectPaymentFrequency")
       .check(saveCsrfToken())
-      .check(regex("Cancelling this payment plan"))
-
-  val selectYesToCancel: HttpRequestBuilder =
-    http("Select Yes to cancel the selected payment plan")
-      .post(s"$baseUrl$redirectUrl$cancelPaymentPlanPage")
-      .formParam("csrfToken", "#{csrfToken}")
-      .formParam("value", "true")
-      .check(status.is(303))
-      .check(header("Location").is("/direct-debits/payment-plan-cancelled"))
-
-  val navigateToCancelPPConfirmationPage: HttpRequestBuilder =
-    http("Navigate to cancel payment plan confirmation page")
-      .get(s"$baseUrl$redirectUrl$cancelConfirmPage")
       .check(status.is(200))
-      .check(regex("Payment plan cancelled"))
+      .check(regex("How often do you want to make payments?"))
 
+  def selectFrequency(paymentFrequency: String):  HttpRequestBuilder =
+    http("Select payment frequency")
+      .post(s"$baseUrl$redirectUrl$selectPaymentFrequency")
+      .formParam("csrfToken", "#{csrfToken}")
+      .formParam("value",paymentFrequency )
+      .check(status.is(303))
 }

@@ -21,14 +21,15 @@ import uk.gov.hmrc.perftests.requests.AuthLoginRequests.{authLogIn, navigateToAu
 import uk.gov.hmrc.perftests.requests.BankDetailsCYARequests.{navigateToBankDetailsCYAPage, submitBankDetails}
 import uk.gov.hmrc.perftests.requests.BankDetailsRequests.{enterBankAccountDetails, navigateToBankAccountPage}
 import uk.gov.hmrc.perftests.requests.ConfirmAuthorityRequests.{navigateToAuthorityConfirmPage, submitAuthorityConfirmation}
-import uk.gov.hmrc.perftests.requests.PaymentAmountRequests.{enterPaymentAmount, navigateToPaymentAmountPage}
+import uk.gov.hmrc.perftests.requests.PaymentAmountRequests.{enterPaymentAmount, enterRegularPaymentAmount, navigateToPaymentAmountPage, navigateToRegularPaymentAmountPage}
 import uk.gov.hmrc.perftests.requests.PaymentCYARequests.{navigateToDDCYAPage, submitDDDetails}
 import uk.gov.hmrc.perftests.requests.PaymentConfirmationRequests.navigateToDDConfirmationPage
 import uk.gov.hmrc.perftests.requests.PaymentDateRequests.{enterPaymentDate, navigateToPaymentDatePage}
-import uk.gov.hmrc.perftests.requests.PaymentPlanRequests.{choosePaymentPlan, navigateToPaymentPlanPage}
+import uk.gov.hmrc.perftests.requests.PaymentPlanRequests.{addPaymentPlanEndDate, choosePaymentPlan, enterPaymentPlanEndDate, enterPaymentPlanStartDate, navigateToAddPaymentPlanEndDate, navigateToBudgetPaymentPlanEndDatePage, navigateToPaymentPlanPage, navigateToPaymentPlanStartDatePage}
 import uk.gov.hmrc.perftests.requests.PaymentReferenceRequests.{enterPaymentRefNumber, navigateToPaymentReferencePage}
 import uk.gov.hmrc.perftests.requests.PaymentTypeRequests.{choosePaymentOption, navigateToPaymentOptionPage}
 import uk.gov.hmrc.perftests.requests.SelectAccountTypeRequests.{navigateToSelectAccountPage, submitAccountType}
+import uk.gov.hmrc.perftests.requests.SelectPaymentFrequencyRequests.{navigateToPaymentFrequencyPage, selectFrequency}
 import uk.gov.hmrc.perftests.requests.SetupDDRequests._
 
 trait SASetupDirectDebitSimulation {
@@ -63,8 +64,11 @@ trait SASetupDirectDebitSimulation {
       navigateToPaymentOptionPage, choosePaymentOption("sa"),
       navigateToPaymentPlanPage, choosePaymentPlan("budgetPaymentPlan"),
       navigateToPaymentReferencePage, enterPaymentRefNumber(saPaymentRef),
-      navigateToPaymentAmountPage, enterPaymentAmount,
-      navigateToPaymentDatePage, enterPaymentDate,
+      navigateToPaymentFrequencyPage, selectFrequency("monthly"),
+      navigateToRegularPaymentAmountPage, enterRegularPaymentAmount,
+      navigateToPaymentPlanStartDatePage, enterPaymentPlanStartDate,
+      navigateToAddPaymentPlanEndDate, addPaymentPlanEndDate,
+      navigateToBudgetPaymentPlanEndDatePage,enterPaymentPlanEndDate,
       navigateToDDCYAPage, submitDDDetails,
       navigateToDDConfirmationPage
     )

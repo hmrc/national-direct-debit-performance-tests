@@ -28,7 +28,7 @@ trait RequestUtils {
   val baseUrl: String              = baseUrlFor("ndds-frontend")
   val redirectUrl: String          = "/direct-debits"
   val yourDDPayment: String        = "/your-direct-debit-payment"
-  val yourDDPayment2ndPage: String = "your-direct-debit-payment?page=2"
+  val yourDDPayment2ndPage: String = "/your-direct-debit-payment?page=2"
   val setupDDPayment: String       = "/set-up-direct-debit-payment"
   val selectAccountType: String    = "/personal-or-business-account"
   val bankAccountPage: String      = "/your-bank-details"
@@ -40,16 +40,16 @@ trait RequestUtils {
   val paymentDate: String          = "/payment-date"
   val savedDDPayment: String       = "/your-saved-direct-debit-payment"
   val ddSubmission: String         = "/direct-debit-payment-submitted"
-  val paymentPlan: String          = "/payment-plan-type"
+  val paymentPlan: String          = "/what-type-payment-plan-selecting"
   val paymentPeriod: String        = "/year-end-and-month"
 
   val authLoginStub: String   = baseUrlFor("auth-login-stub")
   val authLoginStubUrl        = s"$authLoginStub/auth-login-stub/gg-sign-in"
   val CsrfPattern             = """<input type="hidden" name="csrfToken" value="([^"]+)""""
   val UpscanUrlPattern        = """<form action="([^"]+)" method="POST""""
-  val saBudgetPaymentPlan     = "/payment-plan/direct-debit-redirect?directDebitReference=990550021"
+  val saBudgetPaymentPlan     = "/payment-plan/direct-debit-redirect?directDebitReference=99055021"
   val saBudgetPaymentPlanRef  = "/your-payment-plan-details-redirect?paymentPlanReference=200000801"
-  val paymentPlanSummaryPage  = "/payment-plan/dd-payment-plans-summary"
+  val paymentPlanSummaryPage  = "/payment-plan/payment-plans-direct-debit"
   val paymentPlanDetailsPage  = "/your-payment-plan-details"
   val amendPaymentPlanPage    = "/amending-payment-plan"
   val amountToBePaid          = "/amount-need-to-pay"
@@ -60,7 +60,7 @@ trait RequestUtils {
   val amendEndDate            = "/change-payment-plan/date-ending-payment-plan"
   val ppConfirmationPage      = "/payment-plan-amended"
   val existingPP              = "/already-have-payment-plan"
-  val cancelPaymentPlanPage   = "/cancel-payment-plan"
+  val cancelPaymentPlanPage   = "/cancelling-payment-plan"
   val cancelConfirmPage       = "/payment-plan-cancelled"
   val suspendPaymentPlanPage  = "/suspending-this-payment-plan"
   val suspendPeriodPage       = "/how-long-suspension-period-last"
@@ -68,6 +68,11 @@ trait RequestUtils {
   val suspendConfirmPage      = "/payment-plan-suspended"
   val removeSuspension        = "/removing-this-suspension"
   val removeSuspensionConfirm = "/payment-plan-suspension-removed"
+  val selectPaymentFrequency = "/frequency-of-payments"
+  val regularPaymentAmountPage = "/regular-payment-amount"
+  val planStartDate = "/plan-start-date"
+  val planEndDate = "/plan-end-date"
+  val addPaymentPlanEndDateUrl = "/add-payment-plan-end-date"
 
   // Test Data
   val name: String          = "Teddy Dickson"
@@ -90,7 +95,7 @@ trait RequestUtils {
 
   def getRandomDateWithin30Days: (String, String, String) = {
     val today      = LocalDate.now()
-    val randomDays = Random.nextInt(25) + 6 // Between 1 and 30 days
+    val randomDays = Random.nextInt(25) + 6 // Between 6 and 30 days from current date
     val futureDate = today.plusDays(randomDays)
 
     val day   = f"${futureDate.getDayOfMonth}%02d"

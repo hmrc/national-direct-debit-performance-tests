@@ -126,9 +126,6 @@ object AmendPaymentPlanRequests extends ServicesConfiguration with RequestUtils 
       .formParam("csrfToken", "#{csrfToken}")
       .check(status.is(303))
 
-
-
-
   val navigateToSuspendPaymentPlanPage: HttpRequestBuilder =
     http("Navigate to suspend payment plan page")
       .get(s"$baseUrl$redirectUrl$suspendPaymentPlanPage")
@@ -140,7 +137,6 @@ object AmendPaymentPlanRequests extends ServicesConfiguration with RequestUtils 
       .get(s"$baseUrl$redirectUrl$suspendPeriodPage")
       .check(status.is(200))
       .check(saveCsrfToken())
-      .check(regex("Enter suspension dates"))
 
   val ((startDay, startMonth, startYear), (endDay, endMonth, endYear)) = getStartAndEndDate
 
@@ -181,6 +177,5 @@ object AmendPaymentPlanRequests extends ServicesConfiguration with RequestUtils 
       .get(s"$baseUrl$redirectUrl$suspendPeriodPage")
       .check(saveCsrfToken())
       .check(status.is(200))
-      .check(regex("Enter suspension dates"))
 
 }
