@@ -60,7 +60,7 @@ trait RequestUtils {
   val amendEndDate            = "/change-payment-plan/date-ending-payment-plan"
   val ppConfirmationPage      = "/payment-plan-amended"
   val existingPP              = "/already-have-payment-plan"
-  val cancelPaymentPlanPage   = "/cancel-payment-plan"
+  val cancelPaymentPlanPage   = "/cancelling-payment-plan"
   val cancelConfirmPage       = "/payment-plan-cancelled"
   val suspendPaymentPlanPage  = "/suspending-this-payment-plan"
   val suspendPeriodPage       = "/how-long-suspension-period-last"

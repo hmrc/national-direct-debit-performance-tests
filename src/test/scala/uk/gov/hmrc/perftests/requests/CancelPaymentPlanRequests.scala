@@ -28,7 +28,7 @@ object CancelPaymentPlanRequests extends ServicesConfiguration with RequestUtils
       .get(s"$baseUrl$redirectUrl$cancelPaymentPlanPage")
       .check(status.is(200))
       .check(saveCsrfToken())
-      .check(regex("Cancel this payment plan"))
+      .check(regex("Cancelling this payment plan"))
 
   val selectYesToCancel: HttpRequestBuilder =
     http("Select Yes to cancel the selected payment plan")
