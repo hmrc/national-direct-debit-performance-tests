@@ -32,7 +32,8 @@ class NDDSSimulation
     with SAAmendPaymentSimulation
     with SACancelPaymentSimulation
     with SASuspendPaymentSimulation
-    with DirectDebitInstructionsSimulation {
+    with DirectDebitInstructionsSimulation
+    with AddNewPaymentPlanSimulation{
 
   runSimulation()
 

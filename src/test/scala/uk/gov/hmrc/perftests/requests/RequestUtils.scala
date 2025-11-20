@@ -68,6 +68,11 @@ trait RequestUtils {
   val suspendConfirmPage      = "/payment-plan-suspended"
   val removeSuspension        = "/removing-this-suspension"
   val removeSuspensionConfirm = "/payment-plan-suspension-removed"
+  val selectPaymentFrequency = "/frequency-of-payments"
+  val regularPaymentAmountPage = "/regular-payment-amount"
+  val planStartDate = "/plan-start-date"
+  val planEndDate = "/plan-end-date"
+  val addPaymentPlanEndDateUrl = "/add-payment-plan-end-date"
 
   // Test Data
   val name: String          = "Teddy Dickson"
@@ -90,7 +95,7 @@ trait RequestUtils {
 
   def getRandomDateWithin30Days: (String, String, String) = {
     val today      = LocalDate.now()
-    val randomDays = Random.nextInt(25) + 6 // Between 1 and 30 days
+    val randomDays = Random.nextInt(25) + 6 // Between 6 and 30 days from current date
     val futureDate = today.plusDays(randomDays)
 
     val day   = f"${futureDate.getDayOfMonth}%02d"

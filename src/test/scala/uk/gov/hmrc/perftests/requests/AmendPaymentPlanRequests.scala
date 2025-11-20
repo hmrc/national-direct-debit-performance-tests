@@ -126,9 +126,6 @@ object AmendPaymentPlanRequests extends ServicesConfiguration with RequestUtils 
       .formParam("csrfToken", "#{csrfToken}")
       .check(status.is(303))
 
-
-
-
   val navigateToSuspendPaymentPlanPage: HttpRequestBuilder =
     http("Navigate to suspend payment plan page")
       .get(s"$baseUrl$redirectUrl$suspendPaymentPlanPage")

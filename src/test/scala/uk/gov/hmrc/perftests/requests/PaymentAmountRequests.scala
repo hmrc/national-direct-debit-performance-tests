@@ -36,4 +36,18 @@ object PaymentAmountRequests extends ServicesConfiguration with RequestUtils {
       .formParam("csrfToken", "#{csrfToken}")
       .formParam("value", "1000")
       .check(status.is(303))
+
+  val navigateToRegularPaymentAmountPage: HttpRequestBuilder =
+    http("Navigate to regular payment amount page")
+      .get(s"$baseUrl$redirectUrl$regularPaymentAmountPage")
+      .check(saveCsrfToken())
+      .check(status.is(200))
+      .check(regex("How much is the regular payment amount, in pounds?"))
+
+  val enterRegularPaymentAmount: HttpRequestBuilder =
+    http("Enter regular Payment amount")
+      .post(s"$baseUrl$redirectUrl$regularPaymentAmountPage")
+      .formParam("csrfToken", "#{csrfToken}")
+      .formParam("value", "5000")
+      .check(status.is(303))
 }

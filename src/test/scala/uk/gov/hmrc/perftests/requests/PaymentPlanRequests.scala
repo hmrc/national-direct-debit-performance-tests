@@ -20,7 +20,6 @@ import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import io.gatling.http.request.builder.HttpRequestBuilder
 import uk.gov.hmrc.performance.conf.ServicesConfiguration
-import uk.gov.hmrc.perftests.requests.SetupDDRequests.{redirectUrl, setupDDPayment}
 
 object PaymentPlanRequests extends ServicesConfiguration with RequestUtils {
 
@@ -49,4 +48,51 @@ object PaymentPlanRequests extends ServicesConfiguration with RequestUtils {
     http("Land to payment plan details page")
       .get(s"$baseUrl$redirectUrl$paymentPlanSummaryPage")
       .check(status.is(200))
+
+  val navigateToPaymentPlanStartDatePage: HttpRequestBuilder =
+    http("Navigate to Payment plan start date page")
+      .get(s"$baseUrl$redirectUrl$planStartDate")
+      .check(saveCsrfToken())
+      .check(status.is(200))
+      .check(regex("What date are you starting this payment plan?"))
+
+  val ((startDay, startMonth, startYear), (endDay, endMonth, endYear)) = getStartAndEndDate
+
+  val enterPaymentPlanStartDate: HttpRequestBuilder =
+    http("Enter payment plan start date")
+      .post(s"$baseUrl$redirectUrl$planStartDate")
+      .formParam("csrfToken", "#{csrfToken}")
+      .formParam("value.day", startDay)
+      .formParam("value.month", startMonth)
+      .formParam("value.year", startYear)
+      .check(status.is(303))
+
+  val navigateToAddPaymentPlanEndDate: HttpRequestBuilder =
+    http("Navigate to add payment plan end date page")
+      .get(s"$baseUrl$redirectUrl$addPaymentPlanEndDateUrl")
+      .check(saveCsrfToken())
+      .check(status.is(200))
+      .check(regex("Do you want to add a payment plan end date?"))
+
+  val addPaymentPlanEndDate: HttpRequestBuilder =
+    http("Add payment plan end date")
+      .post(s"$baseUrl$redirectUrl$addPaymentPlanEndDateUrl")
+      .formParam("csrfToken", "#{csrfToken}")
+      .formParam("value", "true")
+      .check(status.is(303))
+
+  val navigateToBudgetPaymentPlanEndDatePage: HttpRequestBuilder =
+    http("Navigate to budget payment plan end date page")
+      .get(s"$baseUrl$redirectUrl$planEndDate")
+      .check(status.is(200))
+      .check(regex("When do you want this payment plan to end?"))
+
+  val enterPaymentPlanEndDate: HttpRequestBuilder =
+    http("Enter payment plan start date")
+      .post(s"$baseUrl$redirectUrl$planEndDate")
+      .formParam("csrfToken", "#{csrfToken}")
+      .formParam("value.day", endDay)
+      .formParam("value.month", endMonth)
+      .formParam("value.year", endYear)
+      .check(status.is(303))
 }
