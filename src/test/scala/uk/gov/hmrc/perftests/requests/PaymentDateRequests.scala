@@ -41,19 +41,17 @@ object PaymentDateRequests extends ServicesConfiguration with RequestUtils {
       .formParam("value.year", year)
       .check(status.is(303))
 
-  val navigateToPaymentPeriodPage: HttpRequestBuilder =
-    http("Navigate to payment period page")
-      .get(s"$baseUrl$redirectUrl$paymentPeriod")
+  val navigateToExtraNumbersPage: HttpRequestBuilder =
+    http("Navigate to extra numbers page")
+      .get(s"$baseUrl$redirectUrl$extraNumbers")
       .check(saveCsrfToken())
       .check(status.is(200))
-      .check(regex("What is the year end and month?"))
+      .check(regex("Add 4 extra numbers to your payment reference"))
 
-  val enterPaymentPeriod: HttpRequestBuilder =
-    http("Enter payment period")
-      .post(s"$baseUrl$redirectUrl$paymentPeriod")
+  val enterFourNumbers: HttpRequestBuilder =
+    http("Enter 4 extra numbers")
+      .post(s"$baseUrl$redirectUrl$extraNumbers")
       .formParam("csrfToken", "#{csrfToken}")
-      .formParam("value.year", year)
-      .formParam("value.month", month)
+      .formParam("value", "2512")
       .check(status.is(303))
-
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 HM Revenue & Customs
+ * Copyright 2025 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,21 +21,19 @@ import io.gatling.http.Predef._
 import io.gatling.http.request.builder.HttpRequestBuilder
 import uk.gov.hmrc.performance.conf.ServicesConfiguration
 
-object BankDetailsRequests extends ServicesConfiguration with RequestUtils {
+object AddExtraNumberRequest extends ServicesConfiguration with RequestUtils {
 
-  val navigateToBankAccountPage: HttpRequestBuilder =
-    http("Navigate to Bank Account page")
-      .get(s"$baseUrl$redirectUrl$bankAccountPage")
+  val navigateToAddExtraNumbersPage: HttpRequestBuilder =
+    http("Tell us about this payment")
+      .get(s"$baseUrl$redirectUrl$addExtraNumbersOption")
       .check(saveCsrfToken())
       .check(status.is(200))
-      .check(regex("What are the bank account details?"))
+      .check(regex("Tell us about this payment"))
 
-  def enterBankAccountDetails(name: String, sortCode: String, accountNumber: String): HttpRequestBuilder =
-    http("Enter bank account details page")
-      .post(s"$baseUrl$redirectUrl$bankAccountPage")
+  def chooseAddExtraNumber(addExtraNumber: String): HttpRequestBuilder =
+    http("Add 4 extra numbers to your payment reference")
+      .post(s"$baseUrl$redirectUrl$addExtraNumbersOption")
       .formParam("csrfToken", "#{csrfToken}")
-      .formParam("accountHolderName", name)
-      .formParam("sortCode", sortCode)
-      .formParam("accountNumber", accountNumber)
+      .formParam("value", addExtraNumber)
       .check(status.is(303))
 }
