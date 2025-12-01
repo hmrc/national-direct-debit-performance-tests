@@ -25,7 +25,7 @@ import uk.gov.hmrc.perftests.requests.PaymentAmountRequests.{enterPaymentAmount,
 import uk.gov.hmrc.perftests.requests.PaymentCYARequests.{navigateToDDCYAPage, submitDDDetails}
 import uk.gov.hmrc.perftests.requests.PaymentConfirmationRequests.navigateToDDConfirmationPage
 import uk.gov.hmrc.perftests.requests.PaymentDateRequests.{enterPaymentDate, navigateToPaymentDatePage}
-import uk.gov.hmrc.perftests.requests.PaymentPlanRequests.{choosePaymentPlan, navigateToPaymentPlanPage}
+import uk.gov.hmrc.perftests.requests.PaymentPlanRequests.{choosePaymentPlan, enterPaymentPlanStartDate, navigateToPaymentPlanPage, navigateToPaymentPlanStartDatePage}
 import uk.gov.hmrc.perftests.requests.PaymentReferenceRequests.{enterPaymentRefNumber, navigateToPaymentReferencePage}
 import uk.gov.hmrc.perftests.requests.PaymentTypeRequests.{choosePaymentOption, navigateToPaymentOptionPage}
 import uk.gov.hmrc.perftests.requests.SelectAccountTypeRequests.{navigateToSelectAccountPage, submitAccountType}
@@ -63,8 +63,7 @@ trait MGDSetupDirectDebitSimulation {
       navigateToPaymentOptionPage, choosePaymentOption("mgd"),
       navigateToPaymentPlanPage, choosePaymentPlan("variablePaymentPlan"),
       navigateToPaymentReferencePage, enterPaymentRefNumber(mgdPaymentRef),
-      navigateToPaymentAmountPage, enterPaymentAmount,
-      navigateToPaymentDatePage, enterPaymentDate,
+      navigateToPaymentPlanStartDatePage, enterPaymentPlanStartDate,
       navigateToDDCYAPage, submitDDDetails,
       navigateToDDConfirmationPage
     )

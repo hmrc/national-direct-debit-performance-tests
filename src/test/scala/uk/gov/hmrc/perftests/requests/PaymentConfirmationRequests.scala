@@ -27,5 +27,5 @@ object PaymentConfirmationRequests extends ServicesConfiguration with RequestUti
     http("Navigate to DD payment details confirmation page")
       .get(s"$baseUrl$redirectUrl$ddSubmission")
       .check(status.is(200))
-      .check(regex("Your direct debit payment was successful"))
+      .check(regex("Direct Debit payment set up"))
 }

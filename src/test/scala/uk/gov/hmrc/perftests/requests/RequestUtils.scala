@@ -38,10 +38,11 @@ trait RequestUtils {
   val paymentReference: String     = "/payment-reference"
   val paymentAmount: String        = "/how-much-want-to-pay"
   val paymentDate: String          = "/payment-date"
-  val savedDDPayment: String       = "/your-saved-direct-debit-payment"
-  val ddSubmission: String         = "/direct-debit-payment-submitted"
+  val checkDDPayment: String       = "/check-payment-plan-details"
+  val ddSubmission: String         = "/direct-debit-payment-set-up"
   val paymentPlan: String          = "/what-type-payment-plan-selecting"
-  val paymentPeriod: String        = "/year-end-and-month"
+  val addExtraNumbersOption: String = "/tell-us-about-this-payment"
+  val extraNumbers: String        = "/add-extra-numbers-payment-reference"
 
   val authLoginStub: String   = baseUrlFor("auth-login-stub")
   val authLoginStubUrl        = s"$authLoginStub/auth-login-stub/gg-sign-in"
