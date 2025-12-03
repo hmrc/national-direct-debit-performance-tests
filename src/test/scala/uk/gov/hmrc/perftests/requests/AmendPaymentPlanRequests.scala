@@ -29,14 +29,20 @@ object AmendPaymentPlanRequests extends ServicesConfiguration with RequestUtils 
       .check(status.is(200))
       .check(regex("Amending this payment plan"))
 
-  val navigateToAmendAmountPage: HttpRequestBuilder =
-    http("Navigate to amend amount page")
+  val navigateToCheckAmendingDetailsPage: HttpRequestBuilder =
+    http("Navigate to check Amending Payment plan details page")
+      .get(s"$baseUrl$redirectUrl$checkAmendingPage")
+      .check(status.is(200))
+      .check(regex("Check your amendment details"))
+
+  val navigateToAmendRegularAmountPage: HttpRequestBuilder =
+    http("Navigate to amend regular amount page")
       .get(s"$baseUrl$redirectUrl$amountToBePaid")
       .check(saveCsrfToken())
       .check(status.is(200))
 
-  val enterAmendPaymentAmount: HttpRequestBuilder =
-    http("Enter the amount to be paid")
+  val enterAmendRegularPaymentAmount: HttpRequestBuilder =
+    http("Enter the regular amount to be paid")
       .post(s"$baseUrl$redirectUrl$amountToBePaid")
       .formParam("csrfToken", "#{csrfToken}")
       .formParam("value", 100)
@@ -46,7 +52,19 @@ object AmendPaymentPlanRequests extends ServicesConfiguration with RequestUtils 
     http("Navigate to payment plan end date page")
       .get(s"$baseUrl$redirectUrl$paymentPlanEndDate")
       .check(status.is(200))
-      .check(regex("What date are you ending this payment plan?"))
+      .check(regex("When do you want this payment plan to end?"))
+
+  val navigateToPaymentPlanDatePage: HttpRequestBuilder =
+    http("Navigate to payment plan date page")
+      .get(s"$baseUrl$redirectUrl$amendPaymentPlanDate")
+      .check(status.is(200))
+      .check(regex("When do you want to make this payment?"))
+
+  val navigateToChangeAmendAmountPage: HttpRequestBuilder =
+    http("Navigate to change amend amount page")
+      .get(s"$baseUrl$redirectUrl$changeHowMuchDoYouWantToPay")
+      .check(status.is(200))
+      .check(regex("How much do you want to pay, in pounds?"))
 
   val (day, month, year) = getRandomDateWithin30Days
 
@@ -59,24 +77,20 @@ object AmendPaymentPlanRequests extends ServicesConfiguration with RequestUtils 
       .formParam("value.year", year)
       .check(status.is(303))
 
-  val navigateToPaymentPlanCYAPage: HttpRequestBuilder =
-    http("Navigate to payment plan end date page")
-      .get(s"$baseUrl$redirectUrl$paymentPlanCYAPage")
-      .check(saveCsrfToken())
-      .check(status.is(200))
-      .check(regex("Confirm new payment plan details"))
+  val submitPaymentPlanDate: HttpRequestBuilder =
+    http("Enter payment plan end date")
+      .post(s"$baseUrl$redirectUrl$amendPaymentPlanDate")
+      .formParam("csrfToken", "#{csrfToken}")
+      .formParam("value.day", day)
+      .formParam("value.month", month)
+      .formParam("value.year", year)
+      .check(status.is(303))
 
   val navigateToExistingPaymentPlanCYAPage: HttpRequestBuilder =
-    http("Navigate to payment plan end date page")
+    http("Navigate to existing payment plan CYA page")
       .get(s"$baseUrl$redirectUrl$confirmExistingPayment")
       .check(status.is(200))
       .check(regex("Confirm new payment plan details"))
-
-  val navigateToAmendAmountToBePaidPage: HttpRequestBuilder =
-    http("Navigate to amend payment plan end date page")
-      .get(s"$baseUrl$redirectUrl$amendAmountToBePaid")
-      .check(status.is(200))
-      .check(regex("What amount do you need to pay?"))
 
   val navigateToAmendAEndDatePage: HttpRequestBuilder =
     http("Navigate to amend payment plan end date page")
@@ -87,6 +101,12 @@ object AmendPaymentPlanRequests extends ServicesConfiguration with RequestUtils 
   val submitPaymentPlanDetails: HttpRequestBuilder =
     http("Enter payment plan details")
       .post(s"$baseUrl$redirectUrl$paymentPlanCYAPage")
+      .formParam("csrfToken", "#{csrfToken}")
+      .check(status.is(303))
+
+  val submitAmendPaymentPlanDetails: HttpRequestBuilder =
+    http("Enter payment plan details")
+      .post(s"$baseUrl$redirectUrl$checkAmendingPage")
       .formParam("csrfToken", "#{csrfToken}")
       .check(status.is(303))
 
@@ -177,5 +197,18 @@ object AmendPaymentPlanRequests extends ServicesConfiguration with RequestUtils 
       .get(s"$baseUrl$redirectUrl$suspendPeriodPage")
       .check(saveCsrfToken())
       .check(status.is(200))
+
+  val navigateToAmendAmountPage: HttpRequestBuilder =
+    http("Navigate to amend amount page")
+      .get(s"$baseUrl$redirectUrl$howMuchDoYouWantToPay")
+      .check(saveCsrfToken())
+      .check(status.is(200))
+
+  val enterAmendPaymentAmount: HttpRequestBuilder =
+    http("Enter the amount to be paid")
+      .post(s"$baseUrl$redirectUrl$howMuchDoYouWantToPay")
+      .formParam("csrfToken", "#{csrfToken}")
+      .formParam("value", 100)
+      .check(status.is(303))
 
 }

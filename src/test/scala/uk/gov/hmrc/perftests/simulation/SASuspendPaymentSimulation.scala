@@ -35,6 +35,8 @@ trait SASuspendPaymentSimulation {
       redirectToSABudgetPPRefPage,landOnSABudgetPPRefPage,
       navigateToSuspendPaymentPlanPage,
       navigateToSuspendPeriodPage,submitSuspendPeriodDetails,
+      navigateToSuspendPeriodPage,submitSuspendPeriodDetails,
+      navigateToChangeSuspendPeriodPage,submitSuspendPeriodDetails,
       navigateToCheckSuspendPeriodPage,confirmSuspendPeriod,
       navigateToSuspendPPConfirmationPage
     )

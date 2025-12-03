@@ -88,7 +88,7 @@ object PaymentPlanRequests extends ServicesConfiguration with RequestUtils {
       .check(regex("When do you want this payment plan to end?"))
 
   val enterPaymentPlanEndDate: HttpRequestBuilder =
-    http("Enter payment plan start date")
+    http("Enter payment plan end date")
       .post(s"$baseUrl$redirectUrl$planEndDate")
       .formParam("csrfToken", "#{csrfToken}")
       .formParam("value.day", endDay)

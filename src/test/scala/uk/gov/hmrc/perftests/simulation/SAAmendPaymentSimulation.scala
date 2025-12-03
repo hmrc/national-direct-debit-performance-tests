@@ -32,14 +32,10 @@ trait SAAmendPaymentSimulation {
       landOnSABudgetPPDetailsPage,
       redirectToSABudgetPPRefPage,landOnSABudgetPPRefPage,
       navigateToAmendPaymentPlanPage,
-      navigateToAmendAmountPage, enterAmendPaymentAmount,
+      navigateToAmendRegularAmountPage, enterAmendRegularPaymentAmount,
+      navigateToCheckAmendingDetailsPage,
       navigateToPaymentPlanEndDatePage,submitPaymentPlanEndDate,
-      navigateToPaymentPlanCYAPage,
-      navigateToAmendAmountToBePaidPage,enterAmendPaymentAmount,
-      navigateToPaymentPlanEndDatePage,submitPaymentPlanEndDate,
-      navigateToPaymentPlanCYAPage,
-      navigateToAmendAEndDatePage,submitPaymentPlanEndDate,
-      navigateToPaymentPlanCYAPage,submitPaymentPlanDetails,
+      navigateToCheckAmendingDetailsPage,submitAmendPaymentPlanDetails,
       navigateToPaymentPlanConfirmPage
     )
 
@@ -52,9 +48,11 @@ trait SAAmendPaymentSimulation {
       redirectToSABudgetPPRefPage,landOnSABudgetPPRefPage,
       navigateToAmendPaymentPlanPage,
       navigateToAmendAmountPage, enterAmendPaymentAmount,
-      navigateToPaymentPlanEndDatePage,submitPaymentPlanEndDate,
-      navigateToExistingPPQpage,submitExistingPPDetailS,
-      navigateToExistingPaymentPlanCYAPage,submitPaymentPlanDetails,
+      navigateToCheckAmendingDetailsPage,
+      navigateToPaymentPlanDatePage,submitPaymentPlanDate,
+      navigateToCheckAmendingDetailsPage,
+      navigateToChangeAmendAmountPage, enterAmendPaymentAmount,
+      navigateToCheckAmendingDetailsPage,
       navigateToPaymentPlanConfirmPage
     )
 }
