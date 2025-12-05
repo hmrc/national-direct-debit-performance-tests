@@ -35,6 +35,7 @@ trait RequestUtils {
   val confirmBankDetails: String   = "/confirm-bank-details"
   val confirmAuthority: String     = "/confirm-authority"
   val choosePayment: String        = "/which-tax-duty-payment-plan"
+  val chooseNewPPPayment: String  = "/payment-plan/direct-debit-redirect-to-source?directDebitReference=99055021"
   val paymentReference: String     = "/payment-reference"
   val paymentAmount: String        = "/how-much-want-to-pay"
   val paymentDate: String          = "/payment-date"
@@ -43,6 +44,7 @@ trait RequestUtils {
   val paymentPlan: String          = "/what-type-payment-plan-selecting"
   val addExtraNumbersOption: String = "/tell-us-about-this-payment"
   val extraNumbers: String        = "/add-extra-numbers-payment-reference"
+  val cannotSetupNewPP: String    = "/cannot-set-up-duplicate-plan"
 
   val authLoginStub: String   = baseUrlFor("auth-login-stub")
   val authLoginStubUrl        = s"$authLoginStub/auth-login-stub/gg-sign-in"
@@ -96,7 +98,7 @@ trait RequestUtils {
 
   def getRandomDateWithin30Days: (String, String, String) = {
     val today      = LocalDate.now()
-    val randomDays = Random.nextInt(25) + 6 // Between 6 and 30 days from current date
+    val randomDays = Random.nextInt(20) + 10 // Between 10 and 30 days from current date
     val futureDate = today.plusDays(randomDays)
 
     val day   = f"${futureDate.getDayOfMonth}%02d"
@@ -108,7 +110,7 @@ trait RequestUtils {
 
   def getStartAndEndDate: ((String, String, String), (String, String, String)) = {
     val today      = LocalDate.now()
-    val randomDays = Random.nextInt(25) + 6 // Between 6 and 30 days
+    val randomDays = Random.nextInt(20) + 10 // Between 10 and 30 days
     val startDate  = today.plusDays(randomDays)
     val endDate    = startDate.plusMonths(3)
 
@@ -126,13 +128,19 @@ trait RequestUtils {
   def generateCredId(suffix: String): String = {
     val totalLength      = 16
     val hexChars         = "0123456789abcdef"
-    require(suffix.length < totalLength, "Suffix must be shorter than total length")
-    val randomPartLength = totalLength - suffix.length
-    val randomPart       = (1 to randomPartLength)
-      .map(_ => hexChars(scala.util.Random.nextInt(hexChars.length)))
-      .mkString
-    val credId           = randomPart + suffix
-    println("CredIDs: " + credId)
-    credId
+    if (suffix.length != totalLength){
+      require(suffix.length < totalLength, "Suffix must be shorter than total length")
+      val randomPartLength = totalLength - suffix.length
+      val randomPart       = (1 to randomPartLength)
+        .map(_ => hexChars(scala.util.Random.nextInt(hexChars.length)))
+        .mkString
+      val credId           = randomPart + suffix
+      println("CredIDs: " + credId)
+      credId
+    }
+    else {
+      println("CredID: " + suffix)
+      suffix
+    }
   }
 }

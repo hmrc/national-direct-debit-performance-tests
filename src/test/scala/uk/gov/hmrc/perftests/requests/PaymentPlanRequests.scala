@@ -24,14 +24,14 @@ import uk.gov.hmrc.performance.conf.ServicesConfiguration
 object PaymentPlanRequests extends ServicesConfiguration with RequestUtils {
 
   val navigateToPaymentPlanPage: HttpRequestBuilder =
-    http("Navigate to payment option page")
+    http("Navigate to payment plan option page")
       .get(s"$baseUrl$redirectUrl$paymentPlan")
       .check(saveCsrfToken())
       .check(status.is(200))
       .check(regex("What type of payment plan are you selecting?"))
 
   def choosePaymentPlan(paymentPlanTyoe: String): HttpRequestBuilder =
-    http("Choose the payment Option")
+    http("Choose the payment plan Option")
       .post(s"$baseUrl$redirectUrl$paymentPlan")
       .formParam("csrfToken", "#{csrfToken}")
       .formParam("value", paymentPlanTyoe)
@@ -42,12 +42,12 @@ object PaymentPlanRequests extends ServicesConfiguration with RequestUtils {
       .get(s"$baseUrl$redirectUrl$saBudgetPaymentPlan")
       .formParam("directDebitReference", "990550021")
       .check(status.is(303))
-//      .check(regex("Summary Payment plan"))
 
   val landOnSABudgetPPDetailsPage: HttpRequestBuilder =
     http("Land to payment plan details page")
       .get(s"$baseUrl$redirectUrl$paymentPlanSummaryPage")
       .check(status.is(200))
+      .check(regex("Summary of payment plans for this Direct Debit"))
 
   val navigateToPaymentPlanStartDatePage: HttpRequestBuilder =
     http("Navigate to Payment plan start date page")

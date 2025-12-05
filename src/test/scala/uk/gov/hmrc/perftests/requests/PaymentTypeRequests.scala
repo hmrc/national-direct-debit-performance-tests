@@ -30,6 +30,12 @@ object PaymentTypeRequests extends ServicesConfiguration with RequestUtils {
       .check(status.is(200))
       .check(regex("Which tax or duty is this payment plan for?"))
 
+  val redirectToNewPPPaymentOptionPage: HttpRequestBuilder =
+    http("Redirect to New PP payment option page")
+      .get(s"$baseUrl$redirectUrl$chooseNewPPPayment")
+      .formParam("directDebitReference", "990550021")
+      .check(status.is(303))
+
   def choosePaymentOption(paymentOption: String): HttpRequestBuilder =
     http("Choose the payment Option")
       .post(s"$baseUrl$redirectUrl$choosePayment")
