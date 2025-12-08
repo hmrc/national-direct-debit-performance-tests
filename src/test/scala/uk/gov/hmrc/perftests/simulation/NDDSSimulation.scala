@@ -34,7 +34,7 @@ class NDDSSimulation
     with SASuspendPaymentSimulation
     with DirectDebitInstructionsSimulation
     with AddNewPaymentPlanSimulation
-    with SADWAmendPaymentSimulation{
+    with SADuplicatePPSimulation{
 
   runSimulation()
 

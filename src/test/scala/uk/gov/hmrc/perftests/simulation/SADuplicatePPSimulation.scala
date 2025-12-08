@@ -32,9 +32,9 @@ import uk.gov.hmrc.perftests.requests.SelectAccountTypeRequests.{navigateToSelec
 import uk.gov.hmrc.perftests.requests.SelectPaymentFrequencyRequests.{navigateToPaymentFrequencyPage, selectFrequency}
 import uk.gov.hmrc.perftests.requests.SetupDDRequests.{accountNumber, mgdPaymentRef, name, navigateToSetupDDPage, navigateToYourDDIPage, saPaymentRef, sortCode}
 
-trait SADWAmendPaymentSimulation {
+trait SADuplicatePPSimulation {
   this: PerformanceTestRunner =>
-  setup("amend-payment-plan-dw1-journey-sa-budgetPPlan", "SA-Budget Payment Plan- DW1 Amend PP Journey") withRequests
+  setup("duplicate-payment-plan-journey-DW1", "DW1-Duplicate Payment Plan Journey") withRequests
     (
       navigateToAuth,authLogIn("0000000009000205"),
       navigateToYourDDIPage,
@@ -53,7 +53,7 @@ trait SADWAmendPaymentSimulation {
       navigateToExistingPPQpage,submitExistingPPDetailS,
       navigateToDDConfirmationPage
     )
-  setup("amend-payment-plan-dw2-journey-MGD-budgetPPlan", "MGD-Budget Payment Plan- DW2 Amend PP Journey") withRequests
+  setup("duplicate-payment-plan-journey-DW2", "DW2-Duplicate Payment Plan Journey") withRequests
     (
       navigateToAuth,authLogIn("0000000009000204"),
       navigateToYourDDIPage,
