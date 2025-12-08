@@ -49,6 +49,7 @@ trait RequestUtils {
   val CsrfPattern            = """<input type="hidden" name="csrfToken" value="([^"]+)""""
   val UpscanUrlPattern       = """<form action="([^"]+)" method="POST""""
   val saBudgetPaymentPlan    = "/payment-plan/direct-debit-redirect?directDebitReference=99055021"
+  val setupPaymentPlan       = "/payment-plan/direct-debit-redirect-to-source?directDebitReference=99055021"
   val saBudgetPaymentPlanRef = "/your-payment-plan-details-redirect?paymentPlanReference=200000801"
   val paymentPlanSummaryPage = "/payment-plan/payment-plans-direct-debit"
   val paymentPlanDetailsPage = "/your-payment-plan-details"
@@ -57,8 +58,7 @@ trait RequestUtils {
   val amountToBePaid         = "/amend-regular-payment-amount"
   val paymentPlanEndDate     = "/change-amend-payment-plan-end-date"
   val amendPaymentPlanDate   = "/amend-plan-payment-date"
-  val changePaymentPlanDate  = "/change-amend-payment-plan-date"
-
+  val changePaymentPlanDate  = "/change-amend-plan-payment-date"
   val paymentPlanCYAPage          = "/payment-plan/confirm-new-payment-plan-details"
   val confirmExistingPayment      = "/confirm-new-payment-plan-details"
   val amendAmountToBePaid         = "/change-payment-plan/amount-need-to-pay"
@@ -80,6 +80,7 @@ trait RequestUtils {
   val addPaymentPlanEndDateUrl    = "/add-payment-plan-end-date"
   val howMuchDoYouWantToPay       = "/amend-plan-how-much-do-you-want-to-pay"
   val changeHowMuchDoYouWantToPay = "/change-amend-plan-how-much-do-you-want-to-pay"
+  val canNotSetUpDuplicatePP      = "/cannot-set-up-duplicate-plan"
 
   // Test Data
   val name: String          = "Teddy Dickson"
@@ -132,6 +133,7 @@ trait RequestUtils {
   def generateCredId(suffix: String): String = {
     val totalLength      = 16
     val hexChars         = "0123456789abcdef"
+    if (suffix.length != totalLength){
     require(suffix.length < totalLength, "Suffix must be shorter than total length")
     val randomPartLength = totalLength - suffix.length
     val randomPart       = (1 to randomPartLength)
@@ -140,5 +142,10 @@ trait RequestUtils {
     val credId           = randomPart + suffix
     println("CredIDs: " + credId)
     credId
+  }
+    else {
+      println("CredID: " + suffix)
+      suffix
+    }
   }
 }

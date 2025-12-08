@@ -19,16 +19,20 @@ package uk.gov.hmrc.perftests.simulation
 import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
 import uk.gov.hmrc.perftests.requests.AmendPaymentPlanRequests._
 import uk.gov.hmrc.perftests.requests.AuthLoginRequests.{authLogIn, navigateToAuth}
+import uk.gov.hmrc.perftests.requests.BankDetailsCYARequests.{navigateToBankDetailsCYAPage, submitBankDetails}
+import uk.gov.hmrc.perftests.requests.BankDetailsRequests.{enterBankAccountDetails, navigateToBankAccountPage}
+import uk.gov.hmrc.perftests.requests.ConfirmAuthorityRequests.{navigateToAuthorityConfirmPage, submitAuthorityConfirmation}
 import uk.gov.hmrc.perftests.requests.PaymentAmountRequests.{enterRegularPaymentAmount, navigateToRegularPaymentAmountPage}
 import uk.gov.hmrc.perftests.requests.PaymentCYARequests.{navigateToDDCYAPage, submitDDDetails}
 import uk.gov.hmrc.perftests.requests.PaymentConfirmationRequests.navigateToDDConfirmationPage
-import uk.gov.hmrc.perftests.requests.PaymentPlanRequests.{addPaymentPlanEndDate, choosePaymentPlan, enterPaymentPlanEndDate, enterPaymentPlanStartDate, landOnSABudgetPPDetailsPage, navigateToAddPaymentPlanEndDate, navigateToBudgetPaymentPlanEndDatePage, navigateToPaymentPlanPage, navigateToPaymentPlanStartDatePage, redirectToSABudgetPPDetailsPage}
+import uk.gov.hmrc.perftests.requests.PaymentPlanRequests.{addPaymentPlanEndDate, choosePaymentPlan, enterPaymentPlanEndDate, enterPaymentPlanStartDate, landOnSABudgetPPDetailsPage, navigateToAddPaymentPlanEndDate, navigateToBudgetPaymentPlanEndDatePage, navigateToPaymentPlanPage, navigateToPaymentPlanStartDatePage, redirectToSABudgetPPDetailsPage, redirectToSetUpANewPPPage}
 import uk.gov.hmrc.perftests.requests.PaymentReferenceRequests.{enterPaymentRefNumber, navigateToPaymentReferencePage}
-import uk.gov.hmrc.perftests.requests.PaymentTypeRequests.choosePaymentOption
+import uk.gov.hmrc.perftests.requests.PaymentTypeRequests.{choosePaymentOption, navigateToPaymentOptionPage}
+import uk.gov.hmrc.perftests.requests.SelectAccountTypeRequests.{navigateToSelectAccountPage, submitAccountType}
 import uk.gov.hmrc.perftests.requests.SelectPaymentFrequencyRequests.{navigateToPaymentFrequencyPage, selectFrequency}
-import uk.gov.hmrc.perftests.requests.SetupDDRequests.{navigateToYourDDIPage, saPaymentRef}
+import uk.gov.hmrc.perftests.requests.SetupDDRequests.{accountNumber, mgdPaymentRef, name, navigateToSetupDDPage, navigateToYourDDIPage, saPaymentRef, sortCode}
 
-trait PAYEDW1AmendPaymentSimulation {
+trait SADWAmendPaymentSimulation {
   this: PerformanceTestRunner =>
   setup("amend-payment-plan-dw1-journey-sa-budgetPPlan", "SA-Budget Payment Plan- DW1 Amend PP Journey") withRequests
     (
@@ -36,8 +40,8 @@ trait PAYEDW1AmendPaymentSimulation {
       navigateToYourDDIPage,
       redirectToSABudgetPPDetailsPage,
       landOnSABudgetPPDetailsPage,
-      choosePaymentOption("sa"),
-      choosePaymentOption("sa"),
+      redirectToSetUpANewPPPage,
+      navigateToPaymentOptionPage,choosePaymentOption("sa"),
       navigateToPaymentPlanPage, choosePaymentPlan("budgetPaymentPlan"),
       navigateToPaymentReferencePage, enterPaymentRefNumber(saPaymentRef),
       navigateToPaymentFrequencyPage, selectFrequency("monthly"),
@@ -48,5 +52,19 @@ trait PAYEDW1AmendPaymentSimulation {
       navigateToDDCYAPage, submitDDDetails,
       navigateToExistingPPQpage,submitExistingPPDetailS,
       navigateToDDConfirmationPage
+    )
+  setup("amend-payment-plan-dw2-journey-MGD-budgetPPlan", "MGD-Budget Payment Plan- DW2 Amend PP Journey") withRequests
+    (
+      navigateToAuth,authLogIn("0000000009000204"),
+      navigateToYourDDIPage,
+      redirectToSABudgetPPDetailsPage,
+      landOnSABudgetPPDetailsPage,
+      redirectToSetUpANewPPPage,
+      navigateToPaymentOptionPage,choosePaymentOption("mgd"),
+      navigateToPaymentPlanPage, choosePaymentPlan("variablePaymentPlan"),
+      navigateToPaymentReferencePage, enterPaymentRefNumber(mgdPaymentRef),
+      navigateToPaymentPlanStartDatePage, enterPaymentPlanStartDate,
+      navigateToDDCYAPage, submitDDDetails,
+      navigateToDW2Page
     )
 }
