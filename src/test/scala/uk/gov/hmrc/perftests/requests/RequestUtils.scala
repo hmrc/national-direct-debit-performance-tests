@@ -25,55 +25,62 @@ import scala.util.Random
 
 trait RequestUtils {
 
-  val baseUrl: String              = baseUrlFor("ndds-frontend")
-  val redirectUrl: String          = "/direct-debits"
-  val yourDDPayment: String        = "/your-direct-debit-payment"
-  val yourDDPayment2ndPage: String = "/your-direct-debit-payment?page=2"
-  val setupDDPayment: String       = "/set-up-direct-debit-payment"
-  val selectAccountType: String    = "/personal-or-business-account"
-  val bankAccountPage: String      = "/your-bank-details"
-  val confirmBankDetails: String   = "/confirm-bank-details"
-  val confirmAuthority: String     = "/confirm-authority"
-  val choosePayment: String        = "/which-tax-duty-payment-plan"
-  val paymentReference: String     = "/payment-reference"
-  val paymentAmount: String        = "/how-much-want-to-pay"
-  val paymentDate: String          = "/payment-date"
-  val checkDDPayment: String       = "/check-payment-plan-details"
-  val ddSubmission: String         = "/direct-debit-payment-set-up"
-  val paymentPlan: String          = "/what-type-payment-plan-selecting"
+  val baseUrl: String               = baseUrlFor("ndds-frontend")
+  val redirectUrl: String           = "/direct-debits"
+  val yourDDPayment: String         = "/your-direct-debit-payment"
+  val yourDDPayment2ndPage: String  = "/your-direct-debit-payment?page=2"
+  val setupDDPayment: String        = "/set-up-direct-debit-payment"
+  val selectAccountType: String     = "/personal-or-business-account"
+  val bankAccountPage: String       = "/your-bank-details"
+  val confirmBankDetails: String    = "/confirm-bank-details"
+  val confirmAuthority: String      = "/confirm-authority"
+  val choosePayment: String         = "/which-tax-duty-payment-plan"
+  val paymentReference: String      = "/payment-reference"
+  val paymentAmount: String         = "/how-much-want-to-pay"
+  val paymentDate: String           = "/payment-date"
+  val checkDDPayment: String        = "/check-payment-plan-details"
+  val ddSubmission: String          = "/direct-debit-payment-set-up"
+  val paymentPlan: String           = "/what-type-payment-plan-selecting"
   val addExtraNumbersOption: String = "/tell-us-about-this-payment"
-  val extraNumbers: String        = "/add-extra-numbers-payment-reference"
+  val extraNumbers: String          = "/add-extra-numbers-payment-reference"
 
-  val authLoginStub: String   = baseUrlFor("auth-login-stub")
-  val authLoginStubUrl        = s"$authLoginStub/auth-login-stub/gg-sign-in"
-  val CsrfPattern             = """<input type="hidden" name="csrfToken" value="([^"]+)""""
-  val UpscanUrlPattern        = """<form action="([^"]+)" method="POST""""
-  val saBudgetPaymentPlan     = "/payment-plan/direct-debit-redirect?directDebitReference=99055021"
-  val saBudgetPaymentPlanRef  = "/your-payment-plan-details-redirect?paymentPlanReference=200000801"
-  val paymentPlanSummaryPage  = "/payment-plan/payment-plans-direct-debit"
-  val paymentPlanDetailsPage  = "/your-payment-plan-details"
-  val amendPaymentPlanPage    = "/amending-payment-plan"
-  val amountToBePaid          = "/amount-need-to-pay"
-  val paymentPlanEndDate      = "/date-ending-payment-plan"
-  val paymentPlanCYAPage      = "/payment-plan/confirm-new-payment-plan-details"
-  val confirmExistingPayment  = "/confirm-new-payment-plan-details"
-  val amendAmountToBePaid     = "/change-payment-plan/amount-need-to-pay"
-  val amendEndDate            = "/change-payment-plan/date-ending-payment-plan"
-  val ppConfirmationPage      = "/payment-plan-amended"
-  val existingPP              = "/already-have-payment-plan"
-  val cancelPaymentPlanPage   = "/cancelling-payment-plan"
-  val cancelConfirmPage       = "/payment-plan-cancelled"
-  val suspendPaymentPlanPage  = "/suspending-this-payment-plan"
-  val suspendPeriodPage       = "/how-long-suspension-period-last"
-  val checkSuspendPeriod      = "/check-suspension-details"
-  val suspendConfirmPage      = "/payment-plan-suspended"
-  val removeSuspension        = "/removing-this-suspension"
-  val removeSuspensionConfirm = "/payment-plan-suspension-removed"
-  val selectPaymentFrequency = "/frequency-of-payments"
-  val regularPaymentAmountPage = "/regular-payment-amount"
-  val planStartDate = "/plan-start-date"
-  val planEndDate = "/plan-end-date"
-  val addPaymentPlanEndDateUrl = "/add-payment-plan-end-date"
+  val authLoginStub: String  = baseUrlFor("auth-login-stub")
+  val authLoginStubUrl       = s"$authLoginStub/auth-login-stub/gg-sign-in"
+  val CsrfPattern            = """<input type="hidden" name="csrfToken" value="([^"]+)""""
+  val UpscanUrlPattern       = """<form action="([^"]+)" method="POST""""
+  val saBudgetPaymentPlan    = "/payment-plan/direct-debit-redirect?directDebitReference=99055021"
+  val setupPaymentPlan       = "/payment-plan/direct-debit-redirect-to-source?directDebitReference=99055021"
+  val saBudgetPaymentPlanRef = "/your-payment-plan-details-redirect?paymentPlanReference=200000801"
+  val paymentPlanSummaryPage = "/payment-plan/payment-plans-direct-debit"
+  val paymentPlanDetailsPage = "/your-payment-plan-details"
+  val amendPaymentPlanPage   = "/amending-payment-plan"
+  val checkAmendingPage      = "/check-amendment-details"
+  val amountToBePaid         = "/amend-regular-payment-amount"
+  val paymentPlanEndDate     = "/change-amend-payment-plan-end-date"
+  val amendPaymentPlanDate   = "/amend-plan-payment-date"
+  val changePaymentPlanDate  = "/change-amend-plan-payment-date"
+  val paymentPlanCYAPage          = "/payment-plan/confirm-new-payment-plan-details"
+  val confirmExistingPayment      = "/confirm-new-payment-plan-details"
+  val amendAmountToBePaid         = "/change-payment-plan/amount-need-to-pay"
+  val amendEndDate                = "/change-payment-plan/date-ending-payment-plan"
+  val ppConfirmationPage          = "/payment-plan-amended"
+  val existingPP                  = "/already-have-payment-plan"
+  val cancelPaymentPlanPage       = "/cancelling-payment-plan"
+  val cancelConfirmPage           = "/payment-plan-cancelled"
+  val suspendPaymentPlanPage      = "/suspending-this-payment-plan"
+  val suspendPeriodPage           = "/how-long-suspension-period-last"
+  val checkSuspendPeriod          = "/check-suspension-details"
+  val suspendConfirmPage          = "/payment-plan-suspended"
+  val removeSuspension            = "/removing-this-suspension"
+  val removeSuspensionConfirm     = "/payment-plan-suspension-removed"
+  val selectPaymentFrequency      = "/frequency-of-payments"
+  val regularPaymentAmountPage    = "/regular-payment-amount"
+  val planStartDate               = "/plan-start-date"
+  val planEndDate                 = "/plan-end-date"
+  val addPaymentPlanEndDateUrl    = "/add-payment-plan-end-date"
+  val howMuchDoYouWantToPay       = "/amend-plan-how-much-do-you-want-to-pay"
+  val changeHowMuchDoYouWantToPay = "/change-amend-plan-how-much-do-you-want-to-pay"
+  val canNotSetUpDuplicatePP      = "/cannot-set-up-duplicate-plan"
 
   // Test Data
   val name: String          = "Teddy Dickson"
@@ -126,6 +133,7 @@ trait RequestUtils {
   def generateCredId(suffix: String): String = {
     val totalLength      = 16
     val hexChars         = "0123456789abcdef"
+    if (suffix.length != totalLength){
     require(suffix.length < totalLength, "Suffix must be shorter than total length")
     val randomPartLength = totalLength - suffix.length
     val randomPart       = (1 to randomPartLength)
@@ -134,5 +142,10 @@ trait RequestUtils {
     val credId           = randomPart + suffix
     println("CredIDs: " + credId)
     credId
+  }
+    else {
+      println("CredID: " + suffix)
+      suffix
+    }
   }
 }
