@@ -103,7 +103,7 @@ trait RequestUtils {
 
   def getRandomDateWithin30Days: (String, String, String) = {
     val today      = LocalDate.now()
-    val randomDays = Random.nextInt(25) + 6 // Between 6 and 30 days from current date
+    val randomDays = Random.nextInt(19) + 10 // Between 10 and 29 days from current date
     val futureDate = today.plusDays(randomDays)
 
     val day   = f"${futureDate.getDayOfMonth}%02d"
@@ -115,7 +115,7 @@ trait RequestUtils {
 
   def getStartAndEndDate: ((String, String, String), (String, String, String)) = {
     val today      = LocalDate.now()
-    val randomDays = Random.nextInt(25) + 6 // Between 6 and 30 days
+    val randomDays = Random.nextInt(19) + 10 // Between 10 and 29 days
     val startDate  = today.plusDays(randomDays)
     val endDate    = startDate.plusMonths(3)
 
