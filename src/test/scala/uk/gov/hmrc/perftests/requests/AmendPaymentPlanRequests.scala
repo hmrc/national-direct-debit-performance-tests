@@ -77,8 +77,8 @@ object AmendPaymentPlanRequests extends ServicesConfiguration with RequestUtils 
       .formParam("value.year", year)
       .check(status.is(303))
 
-  val submitChangePaymentPlanEndDate: HttpRequestBuilder =
-    http("Enter payment plan end date")
+  val submitChangePaymentPlanDate: HttpRequestBuilder =
+    http("Enter change payment plan date")
       .post(s"$baseUrl$redirectUrl$changePaymentPlanDate")
       .formParam("csrfToken", "#{csrfToken}")
       .formParam("value.day", day)
@@ -87,7 +87,7 @@ object AmendPaymentPlanRequests extends ServicesConfiguration with RequestUtils 
       .check(status.is(303))
 
   val submitPaymentPlanDate: HttpRequestBuilder =
-    http("Enter payment plan end date")
+    http("Enter payment plan date")
       .post(s"$baseUrl$redirectUrl$amendPaymentPlanDate")
       .formParam("csrfToken", "#{csrfToken}")
       .formParam("value.day", day)
@@ -142,7 +142,7 @@ object AmendPaymentPlanRequests extends ServicesConfiguration with RequestUtils 
       .check(status.is(200))
 
   val navigateToDW2Page: HttpRequestBuilder =
-    http("You cannot set up a duplicate payment plange")
+    http("You cannot set up a duplicate payment plan")
       .get(s"$baseUrl$redirectUrl$canNotSetUpDuplicatePP")
       .check(status.is(200))
 
