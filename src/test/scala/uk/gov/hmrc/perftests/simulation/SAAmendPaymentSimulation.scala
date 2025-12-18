@@ -49,7 +49,7 @@ trait SAAmendPaymentSimulation {
       navigateToAmendPaymentPlanPage,
       navigateToAmendAmountPage, enterAmendPaymentAmount,
       navigateToCheckAmendingDetailsPage,
-      navigateToPaymentPlanDatePage,submitChangePaymentPlanEndDate,
+      navigateToPaymentPlanDatePage,submitPaymentPlanDate,
       navigateToCheckAmendingDetailsPage,
       navigateToChangeAmendAmountPage, enterAmendPaymentAmount,
       navigateToCheckAmendingDetailsPage,
