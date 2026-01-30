@@ -21,7 +21,7 @@ import uk.gov.hmrc.perftests.requests.AmendPaymentPlanRequests._
 import uk.gov.hmrc.perftests.requests.AuthLoginRequests.{authLogIn, navigateToAuth}
 import uk.gov.hmrc.perftests.requests.PaymentPlanRequests.{landOnSABudgetPPDetailsPage, redirectToSABudgetPPDetailsPage}
 import uk.gov.hmrc.perftests.requests.SuspendPaymentPlanRequests.{confirmRemoveSuspension, navigateToRemoveSuspensionConfirmPage, navigateToRemoveSuspensionPage}
-import uk.gov.hmrc.perftests.requests.SetupDDRequests.navigateToYourDDIPage
+import uk.gov.hmrc.perftests.requests.SetupDDRequests.{navigateToYourDDIPage, redirectToSplitter}
 
 trait SASuspendPaymentSimulation {
   this: PerformanceTestRunner =>
@@ -29,7 +29,7 @@ trait SASuspendPaymentSimulation {
   setup("suspend-payment-plan-journey-sa-budgetPPlan", "SA-Budget Payment Plan-Suspend PP Journey") withRequests
     (
       navigateToAuth,authLogIn("2b6"),
-      navigateToYourDDIPage,
+      redirectToSplitter, navigateToYourDDIPage,
       redirectToSABudgetPPDetailsPage,
       landOnSABudgetPPDetailsPage,
       redirectToSABudgetPPRefPage,landOnSABudgetPPRefPage,
@@ -44,7 +44,7 @@ trait SASuspendPaymentSimulation {
   setup("change-suspension-period-journey-sa-budgetPPlan", "SA-Budget Payment Plan-Change Suspension PP Journey") withRequests
     (
       navigateToAuth,authLogIn("4d8"),
-      navigateToYourDDIPage,
+      redirectToSplitter, navigateToYourDDIPage,
       redirectToSABudgetPPDetailsPage,
       landOnSABudgetPPDetailsPage,
       redirectToSABudgetPPRefPage,landOnSABudgetPPRefPage,
@@ -56,7 +56,7 @@ trait SASuspendPaymentSimulation {
   setup("remove-suspension-period-journey-sa-budgetPPlan", "SA-Budget Payment Plan-Remove Suspension PP Journey") withRequests
     (
       navigateToAuth,authLogIn("6f0"),
-      navigateToYourDDIPage,
+      redirectToSplitter, navigateToYourDDIPage,
       redirectToSABudgetPPDetailsPage,
       landOnSABudgetPPDetailsPage,
       redirectToSABudgetPPRefPage,landOnSABudgetPPRefPage,

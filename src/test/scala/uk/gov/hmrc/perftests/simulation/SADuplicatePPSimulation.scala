@@ -30,14 +30,14 @@ import uk.gov.hmrc.perftests.requests.PaymentReferenceRequests.{enterPaymentRefN
 import uk.gov.hmrc.perftests.requests.PaymentTypeRequests.{choosePaymentOption, navigateToPaymentOptionPage}
 import uk.gov.hmrc.perftests.requests.SelectAccountTypeRequests.{navigateToSelectAccountPage, submitAccountType}
 import uk.gov.hmrc.perftests.requests.SelectPaymentFrequencyRequests.{navigateToPaymentFrequencyPage, selectFrequency}
-import uk.gov.hmrc.perftests.requests.SetupDDRequests.{accountNumber, mgdPaymentRef, name, navigateToSetupDDPage, navigateToYourDDIPage, saPaymentRef, sortCode}
+import uk.gov.hmrc.perftests.requests.SetupDDRequests.{accountNumber, mgdPaymentRef, name, navigateToSetupDDPage, navigateToYourDDIPage, redirectToSplitter, saPaymentRef, sortCode}
 
 trait SADuplicatePPSimulation {
   this: PerformanceTestRunner =>
   setup("duplicate-payment-plan-journey-DW1", "DW1-Duplicate Payment Plan Journey") withRequests
     (
       navigateToAuth,authLogIn("0000000009000205"),
-      navigateToYourDDIPage,
+      redirectToSplitter, navigateToYourDDIPage,
       redirectToSABudgetPPDetailsPage,
       landOnSABudgetPPDetailsPage,
       redirectToSetUpANewPPPage,
@@ -56,7 +56,7 @@ trait SADuplicatePPSimulation {
   setup("duplicate-payment-plan-journey-DW2", "DW2-Duplicate Payment Plan Journey") withRequests
     (
       navigateToAuth,authLogIn("0000000009000204"),
-      navigateToYourDDIPage,
+      redirectToSplitter, navigateToYourDDIPage,
       redirectToSABudgetPPDetailsPage,
       landOnSABudgetPPDetailsPage,
       redirectToSetUpANewPPPage,

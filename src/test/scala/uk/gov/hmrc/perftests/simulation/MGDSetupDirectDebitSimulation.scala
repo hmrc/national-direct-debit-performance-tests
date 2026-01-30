@@ -36,7 +36,7 @@ trait MGDSetupDirectDebitSimulation {
   setup("setup-direct-debit-journey-mgd-singlePPlan", "MGD-Single Payment Plan-Setup DD Journey") withRequests
     (
       navigateToAuth,authLogIn(""),
-      navigateToYourDDIPage,
+      redirectToSplitter, navigateToYourDDIPage,
       navigateToSetupDDPage,
       navigateToSelectAccountPage, submitAccountType,
       navigateToBankAccountPage, enterBankAccountDetails(name, sortCode, accountNumber),
@@ -54,7 +54,7 @@ trait MGDSetupDirectDebitSimulation {
   setup("setup-direct-debit-journey-mgd-variablePPlan", "MGD-Variable Payment Plan-Setup DD Journey") withRequests
     (
       navigateToAuth,authLogIn(""),
-      navigateToYourDDIPage,
+      redirectToSplitter, navigateToYourDDIPage,
       navigateToSetupDDPage,
       navigateToSelectAccountPage, submitAccountType,
       navigateToBankAccountPage, enterBankAccountDetails(name, sortCode, accountNumber),

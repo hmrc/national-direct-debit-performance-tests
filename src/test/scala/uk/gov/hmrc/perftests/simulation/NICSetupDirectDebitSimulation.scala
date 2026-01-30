@@ -35,7 +35,7 @@ trait NICSetupDirectDebitSimulation {
   setup("setup-direct-debit-journey-nic", "NIC-Setup Direct Debit Journey") withRequests
     (
       navigateToAuth,authLogIn(""),
-      navigateToYourDDIPage,
+      redirectToSplitter, navigateToYourDDIPage,
       navigateToSetupDDPage,
       navigateToSelectAccountPage, submitAccountType,
       navigateToBankAccountPage, enterBankAccountDetails(name,sortCode,accountNumber),

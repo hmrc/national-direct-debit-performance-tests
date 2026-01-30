@@ -21,7 +21,7 @@ import uk.gov.hmrc.perftests.requests.AmendPaymentPlanRequests._
 import uk.gov.hmrc.perftests.requests.AuthLoginRequests.{authLogIn, navigateToAuth}
 import uk.gov.hmrc.perftests.requests.CancelPaymentPlanRequests.{navigateToCancelPPConfirmationPage, navigateToCancelPaymentPlanPage, selectYesToCancel}
 import uk.gov.hmrc.perftests.requests.PaymentPlanRequests.{landOnSABudgetPPDetailsPage, redirectToSABudgetPPDetailsPage}
-import uk.gov.hmrc.perftests.requests.SetupDDRequests.navigateToYourDDIPage
+import uk.gov.hmrc.perftests.requests.SetupDDRequests.{navigateToYourDDIPage, redirectToSplitter}
 
 trait SACancelPaymentSimulation {
   this: PerformanceTestRunner =>
@@ -29,7 +29,7 @@ trait SACancelPaymentSimulation {
   setup("cancel-payment-plan-journey-sa-variablePPlan", "SA-Variable Payment Plan-Cancel PP Journey") withRequests
     (
       navigateToAuth,authLogIn("3c7"),
-      navigateToYourDDIPage,
+      redirectToSplitter, navigateToYourDDIPage,
       redirectToSABudgetPPDetailsPage,
       landOnSABudgetPPDetailsPage,
       redirectToSABudgetPPRefPage,landOnSABudgetPPRefPage,
