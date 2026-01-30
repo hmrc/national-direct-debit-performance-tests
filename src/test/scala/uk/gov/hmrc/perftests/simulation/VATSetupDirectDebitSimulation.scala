@@ -34,11 +34,11 @@ trait VATSetupDirectDebitSimulation {
   this: PerformanceTestRunner =>
   setup("setup-direct-debit-journey-vat", "VAT-Setup Direct Debit Journey") withRequests
     (
-      navigateToAuth,authLogIn(""),
+      navigateToAuth, authLogIn(""),
       redirectToSplitter, navigateToYourDDIPage,
       navigateToSetupDDPage,
       navigateToSelectAccountPage, submitAccountType,
-      navigateToBankAccountPage, enterBankAccountDetails(name,sortCode,accountNumber),
+      navigateToBankAccountPage, enterBankAccountDetails(name, sortCode, accountNumber),
       navigateToBankDetailsCYAPage, submitBankDetails,
       navigateToAuthorityConfirmPage, submitAuthorityConfirmation("yes"),
       navigateToPaymentOptionPage, choosePaymentOption("vat"),

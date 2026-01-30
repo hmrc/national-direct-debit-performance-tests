@@ -28,39 +28,45 @@ trait SASuspendPaymentSimulation {
 
   setup("suspend-payment-plan-journey-sa-budgetPPlan", "SA-Budget Payment Plan-Suspend PP Journey") withRequests
     (
-      navigateToAuth,authLogIn("2b6"),
+      navigateToAuth, authLogIn("2b6"),
       redirectToSplitter, navigateToYourDDIPage,
       redirectToSABudgetPPDetailsPage,
       landOnSABudgetPPDetailsPage,
-      redirectToSABudgetPPRefPage,landOnSABudgetPPRefPage,
+      redirectToSABudgetPPRefPage, landOnSABudgetPPRefPage,
       navigateToSuspendPaymentPlanPage,
-      navigateToSuspendPeriodPage,submitSuspendPeriodDetails,
-      navigateToSuspendPeriodPage,submitSuspendPeriodDetails,
-      navigateToChangeSuspendPeriodPage,submitSuspendPeriodDetails,
-      navigateToCheckSuspendPeriodPage,confirmSuspendPeriod,
+      navigateToSuspendPeriodPage, submitSuspendPeriodDetails,
+      navigateToSuspendPeriodPage, submitSuspendPeriodDetails,
+      navigateToChangeSuspendPeriodPage, submitSuspendPeriodDetails,
+      navigateToCheckSuspendPeriodPage, confirmSuspendPeriod,
       navigateToSuspendPPConfirmationPage
     )
 
-  setup("change-suspension-period-journey-sa-budgetPPlan", "SA-Budget Payment Plan-Change Suspension PP Journey") withRequests
+  setup(
+    "change-suspension-period-journey-sa-budgetPPlan",
+    "SA-Budget Payment Plan-Change Suspension PP Journey"
+  ) withRequests
     (
-      navigateToAuth,authLogIn("4d8"),
+      navigateToAuth, authLogIn("4d8"),
       redirectToSplitter, navigateToYourDDIPage,
       redirectToSABudgetPPDetailsPage,
       landOnSABudgetPPDetailsPage,
-      redirectToSABudgetPPRefPage,landOnSABudgetPPRefPage,
-      navigateToChangeSuspendPeriodPage,submitSuspendPeriodDetails,
-      navigateToCheckSuspendPeriodPage,confirmSuspendPeriod,
+      redirectToSABudgetPPRefPage, landOnSABudgetPPRefPage,
+      navigateToChangeSuspendPeriodPage, submitSuspendPeriodDetails,
+      navigateToCheckSuspendPeriodPage, confirmSuspendPeriod,
       navigateToSuspendPPConfirmationPage
     )
 
-  setup("remove-suspension-period-journey-sa-budgetPPlan", "SA-Budget Payment Plan-Remove Suspension PP Journey") withRequests
+  setup(
+    "remove-suspension-period-journey-sa-budgetPPlan",
+    "SA-Budget Payment Plan-Remove Suspension PP Journey"
+  ) withRequests
     (
-      navigateToAuth,authLogIn("6f0"),
+      navigateToAuth, authLogIn("6f0"),
       redirectToSplitter, navigateToYourDDIPage,
       redirectToSABudgetPPDetailsPage,
       landOnSABudgetPPDetailsPage,
-      redirectToSABudgetPPRefPage,landOnSABudgetPPRefPage,
-      navigateToRemoveSuspensionPage,confirmRemoveSuspension,
+      redirectToSABudgetPPRefPage, landOnSABudgetPPRefPage,
+      navigateToRemoveSuspensionPage, confirmRemoveSuspension,
       navigateToRemoveSuspensionConfirmPage
     )
 }

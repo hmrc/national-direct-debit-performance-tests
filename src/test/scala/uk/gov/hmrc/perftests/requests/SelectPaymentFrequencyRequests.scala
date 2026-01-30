@@ -30,10 +30,10 @@ object SelectPaymentFrequencyRequests extends ServicesConfiguration with Request
       .check(status.is(200))
       .check(regex("How often do you want to make payments?"))
 
-  def selectFrequency(paymentFrequency: String):  HttpRequestBuilder =
+  def selectFrequency(paymentFrequency: String): HttpRequestBuilder =
     http("Select payment frequency")
       .post(s"$baseUrl$redirectUrl$selectPaymentFrequency")
       .formParam("csrfToken", "#{csrfToken}")
-      .formParam("value",paymentFrequency )
+      .formParam("value", paymentFrequency)
       .check(status.is(303))
 }

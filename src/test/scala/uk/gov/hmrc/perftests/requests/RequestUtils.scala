@@ -45,55 +45,55 @@ trait RequestUtils {
   val addExtraNumbersOption: String = "/tell-us-about-this-payment"
   val extraNumbers: String          = "/add-extra-numbers-payment-reference"
 
-  val authLoginStub: String         = baseUrlFor("auth-login-stub")
-  val authLoginStubUrl              = s"$authLoginStub/auth-login-stub/gg-sign-in"
-  val CsrfPattern                   = """<input type="hidden" name="csrfToken" value="([^"]+)""""
-  val UpscanUrlPattern              = """<form action="([^"]+)" method="POST""""
-  val saBudgetPaymentPlan           = "/payment-plan/direct-debit-redirect?directDebitReference=99055021"
-  val setupPaymentPlan              = "/payment-plan/direct-debit-redirect-to-source?directDebitReference=99055021"
-  val saBudgetPaymentPlanRef        = "/your-payment-plan-details-redirect?paymentPlanReference=200000801"
-  val paymentPlanSummaryPage        = "/payment-plan/payment-plans-direct-debit"
-  val paymentPlanDetailsPage        = "/your-payment-plan-details"
-  val amendPaymentPlanPage          = "/amending-payment-plan"
-  val checkAmendingPage             = "/check-amendment-details"
-  val amountToBePaid                = "/amend-regular-payment-amount"
-  val paymentPlanEndDate            = "/change-amend-payment-plan-end-date"
-  val amendPaymentPlanDate          = "/amend-plan-payment-date"
-  val changePaymentPlanDate         = "/change-amend-plan-payment-date"
-  val paymentPlanCYAPage            = "/payment-plan/confirm-new-payment-plan-details"
-  val ppConfirmationPage            = "/payment-plan-amended"
-  val existingPP                    = "/already-have-payment-plan"
-  val cancelPaymentPlanPage         = "/cancelling-payment-plan"
-  val cancelConfirmPage             = "/payment-plan-cancelled"
-  val suspendPaymentPlanPage        = "/suspending-this-payment-plan"
-  val suspendPeriodPage             = "/how-long-suspension-period-last"
-  val checkSuspendPeriod            = "/check-suspension-details"
-  val suspendConfirmPage            = "/payment-plan-suspended"
-  val removeSuspension              = "/removing-this-suspension"
-  val removeSuspensionConfirm       = "/payment-plan-suspension-removed"
-  val selectPaymentFrequency        = "/how-often-want-to-make-payments"
-  val regularPaymentAmountPage      = "/regular-payment-amount"
-  val planStartDate                 = "/plan-start-date"
-  val planEndDate                   = "/plan-end-date"
-  val addPaymentPlanEndDateUrl      = "/add-payment-plan-end-date"
-  val howMuchDoYouWantToPay         = "/amend-plan-how-much-do-you-want-to-pay"
-  val changeHowMuchDoYouWantToPay   = "/change-amend-plan-how-much-do-you-want-to-pay"
-  val canNotSetUpDuplicatePP        = "/cannot-set-up-duplicate-plan"
+  val authLoginStub: String       = baseUrlFor("auth-login-stub")
+  val authLoginStubUrl            = s"$authLoginStub/auth-login-stub/gg-sign-in"
+  val CsrfPattern                 = """<input type="hidden" name="csrfToken" value="([^"]+)""""
+  val UpscanUrlPattern            = """<form action="([^"]+)" method="POST""""
+  val saBudgetPaymentPlan         = "/payment-plan/direct-debit-redirect?directDebitReference=99055021"
+  val setupPaymentPlan            = "/payment-plan/direct-debit-redirect-to-source?directDebitReference=99055021"
+  val saBudgetPaymentPlanRef      = "/your-payment-plan-details-redirect?paymentPlanReference=200000801"
+  val paymentPlanSummaryPage      = "/payment-plan/payment-plans-direct-debit"
+  val paymentPlanDetailsPage      = "/your-payment-plan-details"
+  val amendPaymentPlanPage        = "/amending-payment-plan"
+  val checkAmendingPage           = "/check-amendment-details"
+  val amountToBePaid              = "/amend-regular-payment-amount"
+  val paymentPlanEndDate          = "/change-amend-payment-plan-end-date"
+  val amendPaymentPlanDate        = "/amend-plan-payment-date"
+  val changePaymentPlanDate       = "/change-amend-plan-payment-date"
+  val paymentPlanCYAPage          = "/payment-plan/confirm-new-payment-plan-details"
+  val ppConfirmationPage          = "/payment-plan-amended"
+  val existingPP                  = "/already-have-payment-plan"
+  val cancelPaymentPlanPage       = "/cancelling-payment-plan"
+  val cancelConfirmPage           = "/payment-plan-cancelled"
+  val suspendPaymentPlanPage      = "/suspending-this-payment-plan"
+  val suspendPeriodPage           = "/how-long-suspension-period-last"
+  val checkSuspendPeriod          = "/check-suspension-details"
+  val suspendConfirmPage          = "/payment-plan-suspended"
+  val removeSuspension            = "/removing-this-suspension"
+  val removeSuspensionConfirm     = "/payment-plan-suspension-removed"
+  val selectPaymentFrequency      = "/how-often-want-to-make-payments"
+  val regularPaymentAmountPage    = "/regular-payment-amount"
+  val planStartDate               = "/plan-start-date"
+  val planEndDate                 = "/plan-end-date"
+  val addPaymentPlanEndDateUrl    = "/add-payment-plan-end-date"
+  val howMuchDoYouWantToPay       = "/amend-plan-how-much-do-you-want-to-pay"
+  val changeHowMuchDoYouWantToPay = "/change-amend-plan-how-much-do-you-want-to-pay"
+  val canNotSetUpDuplicatePP      = "/cannot-set-up-duplicate-plan"
 
   // Test Data
-  val name: String                  = "Teddy Dickson"
-  val sortCode: String              = "207102"
-  val accountNumber: String         = "44311655"
+  val name: String          = "Teddy Dickson"
+  val sortCode: String      = "207102"
+  val accountNumber: String = "44311655"
 
-  val ctPaymentRef: String          = "8337018376A00108A"
-  val nicPaymentRef: String         = "600340016213526259"
-  val olPaymentRef: String          = "XG000001000188"
-  val vatPaymentRef: String         = "562235945"
-  val sdltPaymentRef: String        = "100000511MX"
-  val payePaymentRef: String        = "961PX0023480X"
-  val mgdPaymentRef: String         = "XVM00005554321"
-  val saPaymentRef: String          = "5829820384K"
-  val tcPaymentRef: String          = "WT447571311207NE"
+  val ctPaymentRef: String   = "8337018376A00108A"
+  val nicPaymentRef: String  = "600340016213526259"
+  val olPaymentRef: String   = "XG000001000188"
+  val vatPaymentRef: String  = "562235945"
+  val sdltPaymentRef: String = "100000511MX"
+  val payePaymentRef: String = "961PX0023480X"
+  val mgdPaymentRef: String  = "XVM00005554321"
+  val saPaymentRef: String   = "5829820384K"
+  val tcPaymentRef: String   = "WT447571311207NE"
 
   def saveCsrfToken(): CheckBuilder[RegexCheckType, String] = regex(_ => CsrfPattern).saveAs("csrfToken")
 
@@ -129,19 +129,18 @@ trait RequestUtils {
   }
 
   def generateCredId(suffix: String): String = {
-    val totalLength      = 16
-    val hexChars         = "0123456789abcdef"
-    if (suffix.length != totalLength){
-    require(suffix.length < totalLength, "Suffix must be shorter than total length")
-    val randomPartLength = totalLength - suffix.length
-    val randomPart       = (1 to randomPartLength)
-      .map(_ => hexChars(scala.util.Random.nextInt(hexChars.length)))
-      .mkString
-    val credId           = randomPart + suffix
-    println("CredIDs: " + credId)
-    credId
-  }
-    else {
+    val totalLength = 16
+    val hexChars    = "0123456789abcdef"
+    if (suffix.length != totalLength) {
+      require(suffix.length < totalLength, "Suffix must be shorter than total length")
+      val randomPartLength = totalLength - suffix.length
+      val randomPart       = (1 to randomPartLength)
+        .map(_ => hexChars(scala.util.Random.nextInt(hexChars.length)))
+        .mkString
+      val credId           = randomPart + suffix
+      println("CredIDs: " + credId)
+      credId
+    } else {
       println("CredID: " + suffix)
       suffix
     }

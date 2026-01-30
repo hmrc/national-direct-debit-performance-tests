@@ -24,7 +24,7 @@ trait DirectDebitInstructionsSimulation {
   this: PerformanceTestRunner =>
   setup("direct-debit-instructions-pagination-journey", "Direct Debit Instructions Pagination Journey") withRequests
     (
-      navigateToAuth,authLogIn("8h1"),
+      navigateToAuth, authLogIn("8h1"),
       redirectToSplitter, navigateToYourDDIPage,
       navigateToSecondDDIPage
     )

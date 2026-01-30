@@ -17,7 +17,6 @@
 package uk.gov.hmrc.perftests.simulation
 
 import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
-import uk.gov.hmrc.perftests.requests.AmendPaymentPlanRequests.generateCredId
 import uk.gov.hmrc.perftests.requests.AuthLoginRequests.{authLogIn, navigateToAuth}
 import uk.gov.hmrc.perftests.requests.BankDetailsCYARequests.{navigateToBankDetailsCYAPage, submitBankDetails}
 import uk.gov.hmrc.perftests.requests.BankDetailsRequests.{enterBankAccountDetails, navigateToBankAccountPage}
@@ -35,11 +34,11 @@ trait CTSetupDirectDebitSimulation {
   this: PerformanceTestRunner =>
   setup("setup-direct-debit-journey-ct", "CT-Setup Direct Debit Journey") withRequests
     (
-      navigateToAuth,authLogIn(""),
+      navigateToAuth, authLogIn(""),
       redirectToSplitter, navigateToYourDDIPage,
       navigateToSetupDDPage,
       navigateToSelectAccountPage, submitAccountType,
-      navigateToBankAccountPage, enterBankAccountDetails(name,sortCode,accountNumber),
+      navigateToBankAccountPage, enterBankAccountDetails(name, sortCode, accountNumber),
       navigateToBankDetailsCYAPage, submitBankDetails,
       navigateToAuthorityConfirmPage, submitAuthorityConfirmation("yes"),
       navigateToPaymentOptionPage, choosePaymentOption("ct"),
