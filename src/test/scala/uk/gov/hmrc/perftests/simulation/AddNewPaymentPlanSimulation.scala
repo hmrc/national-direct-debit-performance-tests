@@ -39,11 +39,10 @@ trait AddNewPaymentPlanSimulation {
       navigateToPaymentReferencePage, enterPaymentRefNumber(saPaymentRef),
       navigateToPaymentFrequencyPage, selectFrequency("monthly"),
       navigateToRegularPaymentAmountPage, enterRegularPaymentAmount,
-// below steps are in progress DTR-1415
-//      navigateToPaymentPlanStartDatePage, enterPaymentPlanStartDate,
-//      navigateToAddPaymentPlanEndDate, addPaymentPlanEndDate,
-//      navigateToBudgetPaymentPlanEndDatePage,enterPaymentPlanEndDate,
-//      navigateToDDCYAPage, submitDDDetails,
-//      navigateToDDConfirmationPage
+      navigateToPaymentPlanStartDatePage, enterPaymentPlanStartDate,
+      navigateToAddPaymentPlanEndDate, addPaymentPlanEndDate,
+      navigateToBudgetPaymentPlanEndDatePage,enterPaymentPlanEndDate,
+      navigateToDDCYAPage, submitDDDetails,
+      navigateToDDConfirmationPage
     )
 }

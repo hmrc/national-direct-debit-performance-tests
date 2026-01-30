@@ -28,7 +28,7 @@ object PaymentPlanRequests extends ServicesConfiguration with RequestUtils {
       .get(s"$baseUrl$redirectUrl$paymentPlan")
       .check(saveCsrfToken())
       .check(status.is(200))
-      .check(regex("What type of payment plan are you selecting?"))
+      .check(regex("Tell us about this payment plan"))
 
   def choosePaymentPlan(paymentPlanTyoe: String): HttpRequestBuilder =
     http("Choose the payment Option")
@@ -42,7 +42,6 @@ object PaymentPlanRequests extends ServicesConfiguration with RequestUtils {
       .get(s"$baseUrl$redirectUrl$saBudgetPaymentPlan")
       .formParam("directDebitReference", "990550021")
       .check(status.is(303))
-//      .check(regex("Summary Payment plan"))
 
   val landOnSABudgetPPDetailsPage: HttpRequestBuilder =
     http("Land to payment plan details page")
