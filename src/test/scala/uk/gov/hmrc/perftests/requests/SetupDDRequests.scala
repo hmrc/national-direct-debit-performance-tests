@@ -23,6 +23,11 @@ import uk.gov.hmrc.performance.conf.ServicesConfiguration
 
 object SetupDDRequests extends ServicesConfiguration with RequestUtils {
 
+  val redirectToSplitter: HttpRequestBuilder =
+    http("Redirect to Splitter")
+      .get(s"$baseUrl$splitterUrl")
+      .check(status.is(303))
+
   val navigateToDDPage: HttpRequestBuilder =
     http("Navigate to Direct Debit page")
       .get(s"$baseUrl$redirectUrl")

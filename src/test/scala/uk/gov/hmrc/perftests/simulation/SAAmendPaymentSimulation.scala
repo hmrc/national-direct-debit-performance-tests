@@ -20,36 +20,36 @@ import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
 import uk.gov.hmrc.perftests.requests.AmendPaymentPlanRequests._
 import uk.gov.hmrc.perftests.requests.AuthLoginRequests.{authLogIn, navigateToAuth}
 import uk.gov.hmrc.perftests.requests.PaymentPlanRequests.{landOnSABudgetPPDetailsPage, redirectToSABudgetPPDetailsPage}
-import uk.gov.hmrc.perftests.requests.SetupDDRequests.navigateToYourDDIPage
+import uk.gov.hmrc.perftests.requests.SetupDDRequests.{navigateToYourDDIPage, redirectToSplitter}
 
 trait SAAmendPaymentSimulation {
   this: PerformanceTestRunner =>
   setup("amend-payment-plan-journey-sa-budgetPPlan", "SA-Budget Payment Plan-Amend PP Journey") withRequests
     (
-      navigateToAuth,authLogIn("2b6"),
-      navigateToYourDDIPage,
+      navigateToAuth, authLogIn("2b6"),
+      redirectToSplitter, navigateToYourDDIPage,
       redirectToSABudgetPPDetailsPage,
       landOnSABudgetPPDetailsPage,
-      redirectToSABudgetPPRefPage,landOnSABudgetPPRefPage,
+      redirectToSABudgetPPRefPage, landOnSABudgetPPRefPage,
       navigateToAmendPaymentPlanPage,
       navigateToAmendRegularAmountPage, enterAmendRegularPaymentAmount,
       navigateToCheckAmendingDetailsPage,
-      navigateToPaymentPlanEndDatePage,submitPaymentPlanEndDate,
-      navigateToCheckAmendingDetailsPage,submitAmendPaymentPlanDetails,
+      navigateToPaymentPlanEndDatePage, submitPaymentPlanEndDate,
+      navigateToCheckAmendingDetailsPage, submitAmendPaymentPlanDetails,
       navigateToPaymentPlanConfirmPage
     )
 
   setup("amend-payment-plan-journey-sa-singlePPlan", "SA-Single Payment Plan-Amend PP Journey") withRequests
     (
-      navigateToAuth,authLogIn("1a5"),
+      navigateToAuth, authLogIn("1a5"),
       navigateToYourDDIPage,
       redirectToSABudgetPPDetailsPage,
       landOnSABudgetPPDetailsPage,
-      redirectToSABudgetPPRefPage,landOnSABudgetPPRefPage,
+      redirectToSABudgetPPRefPage, landOnSABudgetPPRefPage,
       navigateToAmendPaymentPlanPage,
       navigateToAmendAmountPage, enterAmendPaymentAmount,
       navigateToCheckAmendingDetailsPage,
-      navigateToPaymentPlanDatePage,submitPaymentPlanDate,
+      navigateToPaymentPlanDatePage, submitPaymentPlanDate,
       navigateToCheckAmendingDetailsPage,
       navigateToChangeAmendAmountPage, enterAmendPaymentAmount,
       navigateToCheckAmendingDetailsPage,

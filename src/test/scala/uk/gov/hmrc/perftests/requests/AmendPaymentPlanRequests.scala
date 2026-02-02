@@ -58,7 +58,7 @@ object AmendPaymentPlanRequests extends ServicesConfiguration with RequestUtils 
     http("Navigate to payment plan date page")
       .get(s"$baseUrl$redirectUrl$changePaymentPlanDate")
       .check(status.is(200))
-      .check(regex("When do you want to make this payment?"))
+      .check(regex("What date are you making this payment?"))
 
   val navigateToChangeAmendAmountPage: HttpRequestBuilder =
     http("Navigate to change amend amount page")

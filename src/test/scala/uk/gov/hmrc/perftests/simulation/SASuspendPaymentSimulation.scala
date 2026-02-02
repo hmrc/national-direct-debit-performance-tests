@@ -21,46 +21,52 @@ import uk.gov.hmrc.perftests.requests.AmendPaymentPlanRequests._
 import uk.gov.hmrc.perftests.requests.AuthLoginRequests.{authLogIn, navigateToAuth}
 import uk.gov.hmrc.perftests.requests.PaymentPlanRequests.{landOnSABudgetPPDetailsPage, redirectToSABudgetPPDetailsPage}
 import uk.gov.hmrc.perftests.requests.SuspendPaymentPlanRequests.{confirmRemoveSuspension, navigateToRemoveSuspensionConfirmPage, navigateToRemoveSuspensionPage}
-import uk.gov.hmrc.perftests.requests.SetupDDRequests.navigateToYourDDIPage
+import uk.gov.hmrc.perftests.requests.SetupDDRequests.{navigateToYourDDIPage, redirectToSplitter}
 
 trait SASuspendPaymentSimulation {
   this: PerformanceTestRunner =>
 
   setup("suspend-payment-plan-journey-sa-budgetPPlan", "SA-Budget Payment Plan-Suspend PP Journey") withRequests
     (
-      navigateToAuth,authLogIn("2b6"),
-      navigateToYourDDIPage,
+      navigateToAuth, authLogIn("2b6"),
+      redirectToSplitter, navigateToYourDDIPage,
       redirectToSABudgetPPDetailsPage,
       landOnSABudgetPPDetailsPage,
-      redirectToSABudgetPPRefPage,landOnSABudgetPPRefPage,
+      redirectToSABudgetPPRefPage, landOnSABudgetPPRefPage,
       navigateToSuspendPaymentPlanPage,
-      navigateToSuspendPeriodPage,submitSuspendPeriodDetails,
-      navigateToSuspendPeriodPage,submitSuspendPeriodDetails,
-      navigateToChangeSuspendPeriodPage,submitSuspendPeriodDetails,
-      navigateToCheckSuspendPeriodPage,confirmSuspendPeriod,
+      navigateToSuspendPeriodPage, submitSuspendPeriodDetails,
+      navigateToSuspendPeriodPage, submitSuspendPeriodDetails,
+      navigateToChangeSuspendPeriodPage, submitSuspendPeriodDetails,
+      navigateToCheckSuspendPeriodPage, confirmSuspendPeriod,
       navigateToSuspendPPConfirmationPage
     )
 
-  setup("change-suspension-period-journey-sa-budgetPPlan", "SA-Budget Payment Plan-Change Suspension PP Journey") withRequests
+  setup(
+    "change-suspension-period-journey-sa-budgetPPlan",
+    "SA-Budget Payment Plan-Change Suspension PP Journey"
+  ) withRequests
     (
-      navigateToAuth,authLogIn("4d8"),
-      navigateToYourDDIPage,
+      navigateToAuth, authLogIn("4d8"),
+      redirectToSplitter, navigateToYourDDIPage,
       redirectToSABudgetPPDetailsPage,
       landOnSABudgetPPDetailsPage,
-      redirectToSABudgetPPRefPage,landOnSABudgetPPRefPage,
-      navigateToChangeSuspendPeriodPage,submitSuspendPeriodDetails,
-      navigateToCheckSuspendPeriodPage,confirmSuspendPeriod,
+      redirectToSABudgetPPRefPage, landOnSABudgetPPRefPage,
+      navigateToChangeSuspendPeriodPage, submitSuspendPeriodDetails,
+      navigateToCheckSuspendPeriodPage, confirmSuspendPeriod,
       navigateToSuspendPPConfirmationPage
     )
 
-  setup("remove-suspension-period-journey-sa-budgetPPlan", "SA-Budget Payment Plan-Remove Suspension PP Journey") withRequests
+  setup(
+    "remove-suspension-period-journey-sa-budgetPPlan",
+    "SA-Budget Payment Plan-Remove Suspension PP Journey"
+  ) withRequests
     (
-      navigateToAuth,authLogIn("6f0"),
-      navigateToYourDDIPage,
+      navigateToAuth, authLogIn("6f0"),
+      redirectToSplitter, navigateToYourDDIPage,
       redirectToSABudgetPPDetailsPage,
       landOnSABudgetPPDetailsPage,
-      redirectToSABudgetPPRefPage,landOnSABudgetPPRefPage,
-      navigateToRemoveSuspensionPage,confirmRemoveSuspension,
+      redirectToSABudgetPPRefPage, landOnSABudgetPPRefPage,
+      navigateToRemoveSuspensionPage, confirmRemoveSuspension,
       navigateToRemoveSuspensionConfirmPage
     )
 }

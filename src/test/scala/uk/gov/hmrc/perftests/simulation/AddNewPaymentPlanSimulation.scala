@@ -31,18 +31,18 @@ trait AddNewPaymentPlanSimulation {
   this: PerformanceTestRunner =>
   setup("set-up-new-pp-for-sa-budget-pp-journey", "SA-Budget PP-Set Up new Payment Plan Journey") withRequests
     (
-      navigateToAuth,authLogIn(""),
-      navigateToYourDDIPage,
-      redirectToSABudgetPPDetailsPage,landOnSABudgetPPDetailsPage,
+      navigateToAuth, authLogIn(""),
+      redirectToSplitter, navigateToYourDDIPage,
+      redirectToSABudgetPPDetailsPage, landOnSABudgetPPDetailsPage,
       redirectToSetUpANewPPPage,
-      navigateToPaymentOptionPage,choosePaymentOption("sa"),
+      navigateToPaymentOptionPage, choosePaymentOption("sa"),
       navigateToPaymentPlanPage, choosePaymentPlan("budgetPaymentPlan"),
       navigateToPaymentReferencePage, enterPaymentRefNumber(saPaymentRef),
       navigateToPaymentFrequencyPage, selectFrequency("monthly"),
       navigateToRegularPaymentAmountPage, enterRegularPaymentAmount,
       navigateToPaymentPlanStartDatePage, enterPaymentPlanStartDate,
       navigateToAddPaymentPlanEndDate, addPaymentPlanEndDate,
-      navigateToBudgetPaymentPlanEndDatePage,enterPaymentPlanEndDate,
+      navigateToBudgetPaymentPlanEndDatePage, enterPaymentPlanEndDate,
       navigateToDDCYAPage, submitDDDetails,
       navigateToDDConfirmationPage
     )

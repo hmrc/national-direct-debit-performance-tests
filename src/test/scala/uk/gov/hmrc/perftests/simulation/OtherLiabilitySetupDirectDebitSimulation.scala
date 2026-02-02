@@ -34,11 +34,11 @@ trait OtherLiabilitySetupDirectDebitSimulation {
   this: PerformanceTestRunner =>
   setup("setup-direct-debit-journey-ol", "Other liability-Setup Direct Debit Journey") withRequests
     (
-      navigateToAuth,authLogIn(""),
-      navigateToYourDDIPage,
+      navigateToAuth, authLogIn(""),
+      redirectToSplitter, navigateToYourDDIPage,
       navigateToSetupDDPage,
       navigateToSelectAccountPage, submitAccountType,
-      navigateToBankAccountPage,  enterBankAccountDetails(name,sortCode,accountNumber),
+      navigateToBankAccountPage, enterBankAccountDetails(name, sortCode, accountNumber),
       navigateToBankDetailsCYAPage, submitBankDetails,
       navigateToAuthorityConfirmPage, submitAuthorityConfirmation("yes"),
       navigateToPaymentOptionPage, choosePaymentOption("otherLiability"),
