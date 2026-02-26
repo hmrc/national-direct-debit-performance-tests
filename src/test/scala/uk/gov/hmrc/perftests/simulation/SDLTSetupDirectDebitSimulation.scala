@@ -35,7 +35,7 @@ trait SDLTSetupDirectDebitSimulation {
   setup("setup-direct-debit-journey-sdlt", "SDLT-Setup Direct Debit Journey") withRequests
     (
       navigateToAuth, authLogIn(""),
-      redirectToSplitter, navigateToYourDDIPage,
+      navigateToYourDDIPage,
       navigateToSetupDDPage,
       navigateToSelectAccountPage, submitAccountType,
       navigateToBankAccountPage, enterBankAccountDetails(name, sortCode, accountNumber),

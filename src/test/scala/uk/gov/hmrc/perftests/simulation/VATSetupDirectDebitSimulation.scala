@@ -35,7 +35,7 @@ trait VATSetupDirectDebitSimulation {
   setup("setup-direct-debit-journey-vat", "VAT-Setup Direct Debit Journey") withRequests
     (
       navigateToAuth, authLogIn(""),
-      redirectToSplitter, navigateToYourDDIPage,
+      navigateToYourDDIPage,
       navigateToSetupDDPage,
       navigateToSelectAccountPage, submitAccountType,
       navigateToBankAccountPage, enterBankAccountDetails(name, sortCode, accountNumber),

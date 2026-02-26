@@ -26,14 +26,14 @@ import uk.gov.hmrc.perftests.requests.PaymentPlanRequests.{addPaymentPlanEndDate
 import uk.gov.hmrc.perftests.requests.PaymentReferenceRequests.{enterPaymentRefNumber, navigateToPaymentReferencePage}
 import uk.gov.hmrc.perftests.requests.PaymentTypeRequests.{choosePaymentOption, navigateToPaymentOptionPage}
 import uk.gov.hmrc.perftests.requests.SelectPaymentFrequencyRequests.{navigateToPaymentFrequencyPage, selectFrequency}
-import uk.gov.hmrc.perftests.requests.SetupDDRequests.{mgdPaymentRef, navigateToYourDDIPage, redirectToSplitter, saPaymentRef}
+import uk.gov.hmrc.perftests.requests.SetupDDRequests.{mgdPaymentRef, navigateToYourDDIPage, saPaymentRef}
 
 trait SADuplicatePPSimulation {
   this: PerformanceTestRunner =>
   setup("duplicate-payment-plan-journey-DW1", "DW1-Duplicate Payment Plan Journey") withRequests
     (
       navigateToAuth, authLogIn("0000000009000205"),
-      redirectToSplitter, navigateToYourDDIPage,
+      navigateToYourDDIPage,
       redirectToSABudgetPPDetailsPage,
       landOnSABudgetPPDetailsPage,
       redirectToSetUpANewPPPage,
@@ -52,7 +52,7 @@ trait SADuplicatePPSimulation {
   setup("duplicate-payment-plan-journey-DW2", "DW2-Duplicate Payment Plan Journey") withRequests
     (
       navigateToAuth, authLogIn("0000000009000204"),
-      redirectToSplitter, navigateToYourDDIPage,
+      navigateToYourDDIPage,
       redirectToSABudgetPPDetailsPage,
       landOnSABudgetPPDetailsPage,
       redirectToSetUpANewPPPage,

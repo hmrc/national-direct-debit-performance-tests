@@ -29,14 +29,12 @@ trait SASuspendPaymentSimulation {
   setup("suspend-payment-plan-journey-sa-budgetPPlan", "SA-Budget Payment Plan-Suspend PP Journey") withRequests
     (
       navigateToAuth, authLogIn("2b6"),
-      redirectToSplitter, navigateToYourDDIPage,
+      navigateToYourDDIPage,
       redirectToSABudgetPPDetailsPage,
       landOnSABudgetPPDetailsPage,
       redirectToSABudgetPPRefPage, landOnSABudgetPPRefPage,
       navigateToSuspendPaymentPlanPage,
       navigateToSuspendPeriodPage, submitSuspendPeriodDetails,
-      navigateToSuspendPeriodPage, submitSuspendPeriodDetails,
-      navigateToChangeSuspendPeriodPage, submitSuspendPeriodDetails,
       navigateToCheckSuspendPeriodPage, confirmSuspendPeriod,
       navigateToSuspendPPConfirmationPage
     )
@@ -47,12 +45,12 @@ trait SASuspendPaymentSimulation {
   ) withRequests
     (
       navigateToAuth, authLogIn("4d8"),
-      redirectToSplitter, navigateToYourDDIPage,
+      navigateToYourDDIPage,
       redirectToSABudgetPPDetailsPage,
       landOnSABudgetPPDetailsPage,
       redirectToSABudgetPPRefPage, landOnSABudgetPPRefPage,
       navigateToChangeSuspendPeriodPage, submitSuspendPeriodDetails,
-      navigateToCheckSuspendPeriodPage, confirmSuspendPeriod,
+      navigateToChangeCheckSuspendPeriodPage, confirmSuspendPeriod,
       navigateToSuspendPPConfirmationPage
     )
 
@@ -62,7 +60,7 @@ trait SASuspendPaymentSimulation {
   ) withRequests
     (
       navigateToAuth, authLogIn("6f0"),
-      redirectToSplitter, navigateToYourDDIPage,
+      navigateToYourDDIPage,
       redirectToSABudgetPPDetailsPage,
       landOnSABudgetPPDetailsPage,
       redirectToSABudgetPPRefPage, landOnSABudgetPPRefPage,

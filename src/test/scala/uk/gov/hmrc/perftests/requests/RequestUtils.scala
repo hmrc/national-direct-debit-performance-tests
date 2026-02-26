@@ -67,6 +67,8 @@ trait RequestUtils {
   val cancelConfirmPage           = "/payment-plan-cancelled"
   val suspendPaymentPlanPage      = "/suspending-this-payment-plan"
   val suspendPeriodPage           = "/how-long-suspension-period-last"
+  val changeSuspendPeriodPage     = "/changing-suspension-period"
+  val changeCheckSuspendPeriodPage  = "/change-check-suspension-details"
   val checkSuspendPeriod          = "/check-suspension-details"
   val suspendConfirmPage          = "/payment-plan-suspended"
   val removeSuspension            = "/removing-this-suspension"

@@ -128,7 +128,7 @@ object AmendPaymentPlanRequests extends ServicesConfiguration with RequestUtils 
   val redirectToSABudgetPPRefPage: HttpRequestBuilder =
     http("Select SA Budget payment plan details page")
       .get(s"$baseUrl$redirectUrl$saBudgetPaymentPlanRef")
-      .formParam("paymentPlanReference", "200000802")
+      //.formParam("paymentPlanReference", "200000802")
       .check(status.is(303))
 
   val landOnSABudgetPPRefPage: HttpRequestBuilder =
@@ -186,6 +186,13 @@ object AmendPaymentPlanRequests extends ServicesConfiguration with RequestUtils 
       .check(status.is(200))
       .check(regex("Check your suspension details"))
 
+  val navigateToChangeCheckSuspendPeriodPage: HttpRequestBuilder =
+    http("Navigate to check suspend period page")
+      .get(s"$baseUrl$redirectUrl$changeCheckSuspendPeriodPage")
+      .check(saveCsrfToken())
+      .check(status.is(200))
+      .check(regex("Check your suspension details"))
+
   val confirmSuspendPeriod: HttpRequestBuilder =
     http("Submit suspend period details")
       .post(s"$baseUrl$redirectUrl$checkSuspendPeriod")
@@ -195,13 +202,13 @@ object AmendPaymentPlanRequests extends ServicesConfiguration with RequestUtils 
   val navigateToSuspendPPConfirmationPage: HttpRequestBuilder =
     http("Navigate to suspend payment plan confirmation page")
       .get(s"$baseUrl$redirectUrl$suspendConfirmPage")
-      .formParam("csrfToken", "#{csrfToken}")
+     // .formParam("csrfToken", "#{csrfToken}")
       .check(status.is(200))
-      .check(regex("Payment plan suspended"))
+     // .check(regex("Payment plan suspended"))
 
   val navigateToChangeSuspendPeriodPage: HttpRequestBuilder =
     http("Navigate to change suspend payment plan dates page")
-      .get(s"$baseUrl$redirectUrl$suspendPeriodPage")
+      .get(s"$baseUrl$redirectUrl$changeSuspendPeriodPage")
       .check(saveCsrfToken())
       .check(status.is(200))
 

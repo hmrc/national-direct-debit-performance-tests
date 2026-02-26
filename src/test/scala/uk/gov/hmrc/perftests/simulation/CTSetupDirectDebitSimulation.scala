@@ -35,7 +35,7 @@ trait CTSetupDirectDebitSimulation {
   setup("setup-direct-debit-journey-ct", "CT-Setup Direct Debit Journey") withRequests
     (
       navigateToAuth, authLogIn(""),
-      redirectToSplitter, navigateToYourDDIPage,
+      navigateToYourDDIPage,
       navigateToSetupDDPage,
       navigateToSelectAccountPage, submitAccountType,
       navigateToBankAccountPage, enterBankAccountDetails(name, sortCode, accountNumber),

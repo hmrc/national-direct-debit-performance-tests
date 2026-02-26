@@ -35,7 +35,7 @@ trait OtherLiabilitySetupDirectDebitSimulation {
   setup("setup-direct-debit-journey-ol", "Other liability-Setup Direct Debit Journey") withRequests
     (
       navigateToAuth, authLogIn(""),
-      redirectToSplitter, navigateToYourDDIPage,
+      navigateToYourDDIPage,
       navigateToSetupDDPage,
       navigateToSelectAccountPage, submitAccountType,
       navigateToBankAccountPage, enterBankAccountDetails(name, sortCode, accountNumber),
