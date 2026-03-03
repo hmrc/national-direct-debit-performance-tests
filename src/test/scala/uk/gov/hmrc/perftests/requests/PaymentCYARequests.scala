@@ -30,6 +30,13 @@ object PaymentCYARequests extends ServicesConfiguration with RequestUtils {
       .check(status.is(200))
       .check(regex("Check your payment plan details"))
 
+  val navigateToDDDupeCYAPage: HttpRequestBuilder =
+    http("Navigate to Direct Debit CYA Page")
+      .get(s"$baseUrl$redirectUrl$checkDDPayment")
+      .check(saveCsrfToken())
+      .check(status.is(303))
+      .check(regex("Check your payment plan details"))
+
   val submitDDDetails: HttpRequestBuilder =
     http("Submit DD Payment details")
       .post(s"$baseUrl$redirectUrl$checkDDPayment")

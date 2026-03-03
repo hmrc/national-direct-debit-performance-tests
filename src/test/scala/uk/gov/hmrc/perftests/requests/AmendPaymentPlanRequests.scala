@@ -202,7 +202,7 @@ object AmendPaymentPlanRequests extends ServicesConfiguration with RequestUtils 
   val navigateToSuspendPPConfirmationPage: HttpRequestBuilder =
     http("Navigate to suspend payment plan confirmation page")
       .get(s"$baseUrl$redirectUrl$suspendConfirmPage")
-     // .formParam("csrfToken", "#{csrfToken}")
+      .formParam("csrfToken", "#{csrfToken}")
       .check(status.is(200))
       .check(regex("Payment plan suspended"))
 

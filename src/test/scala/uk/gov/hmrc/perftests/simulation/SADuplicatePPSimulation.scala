@@ -20,7 +20,7 @@ import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
 import uk.gov.hmrc.perftests.requests.AmendPaymentPlanRequests._
 import uk.gov.hmrc.perftests.requests.AuthLoginRequests.{authLogIn, navigateToAuth}
 import uk.gov.hmrc.perftests.requests.PaymentAmountRequests.{enterRegularPaymentAmount, navigateToRegularPaymentAmountPage}
-import uk.gov.hmrc.perftests.requests.PaymentCYARequests.{navigateToDDCYAPage, submitDDDetails}
+import uk.gov.hmrc.perftests.requests.PaymentCYARequests.{navigateToDDCYAPage, navigateToDDDupeCYAPage, submitDDDetails}
 import uk.gov.hmrc.perftests.requests.PaymentConfirmationRequests.navigateToDDConfirmationPage
 import uk.gov.hmrc.perftests.requests.PaymentPlanRequests.{addPaymentPlanEndDate, choosePaymentPlan, enterPaymentPlanEndDate, enterPaymentPlanStartDate, landOnSABudgetPPDetailsPage, navigateToAddPaymentPlanEndDate, navigateToBudgetPaymentPlanEndDatePage, navigateToPaymentPlanPage, navigateToPaymentPlanStartDatePage, redirectToSABudgetPPDetailsPage, redirectToSetUpANewPPPage}
 import uk.gov.hmrc.perftests.requests.PaymentReferenceRequests.{enterPaymentRefNumber, navigateToPaymentReferencePage}
@@ -45,7 +45,7 @@ trait SADuplicatePPSimulation {
       navigateToPaymentPlanStartDatePage, enterPaymentPlanStartDate,
       navigateToAddPaymentPlanEndDate, addPaymentPlanEndDate,
       navigateToBudgetPaymentPlanEndDatePage, enterPaymentPlanEndDate,
-      navigateToDDCYAPage, submitDDDetails,
+      navigateToDDDupeCYAPage, submitDDDetails,
       navigateToExistingPPQpage, submitExistingPPDetailS,
       navigateToDDConfirmationPage
     )
@@ -60,7 +60,7 @@ trait SADuplicatePPSimulation {
       navigateToPaymentPlanPage, choosePaymentPlan("variablePaymentPlan"),
       navigateToPaymentReferencePage, enterPaymentRefNumber(mgdPaymentRef),
       navigateToPaymentPlanStartDatePage, enterPaymentPlanStartDate,
-      navigateToDDCYAPage, submitDDDetails,
+      navigateToDDDupeCYAPage, submitDDDetails,
       navigateToDW2Page
     )
 }
