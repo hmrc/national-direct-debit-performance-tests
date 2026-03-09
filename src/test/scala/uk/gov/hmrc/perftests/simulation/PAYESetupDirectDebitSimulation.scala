@@ -36,7 +36,7 @@ trait PAYESetupDirectDebitSimulation {
   setup("setup-direct-debit-journey-paye", "PAYE-Setup Direct Debit Journey") withRequests
     (
       navigateToAuth, authLogIn(""),
-      redirectToSplitter, navigateToYourDDIPage,
+      navigateToYourDDIPage,
       navigateToSetupDDPage,
       navigateToSelectAccountPage, submitAccountType,
       navigateToBankAccountPage, enterBankAccountDetails(name, sortCode, accountNumber),

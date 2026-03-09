@@ -29,7 +29,7 @@ trait SACancelPaymentSimulation {
   setup("cancel-payment-plan-journey-sa-variablePPlan", "SA-Variable Payment Plan-Cancel PP Journey") withRequests
     (
       navigateToAuth, authLogIn("3c7"),
-      redirectToSplitter, navigateToYourDDIPage,
+      navigateToYourDDIPage,
       redirectToSABudgetPPDetailsPage,
       landOnSABudgetPPDetailsPage,
       redirectToSABudgetPPRefPage, landOnSABudgetPPRefPage,

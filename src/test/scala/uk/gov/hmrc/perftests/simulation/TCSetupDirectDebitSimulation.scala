@@ -36,7 +36,7 @@ trait TCSetupDirectDebitSimulation {
   setup("setup-direct-debit-journey-tc-singlePPlan", "TC-Single Payment Plan-Setup DD Journey") withRequests
     (
       navigateToAuth, authLogIn(""),
-      redirectToSplitter, navigateToYourDDIPage,
+      navigateToYourDDIPage,
       navigateToSetupDDPage,
       navigateToSelectAccountPage, submitAccountType,
       navigateToBankAccountPage, enterBankAccountDetails(name, sortCode, accountNumber),

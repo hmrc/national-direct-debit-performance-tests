@@ -32,7 +32,7 @@ trait AddNewPaymentPlanSimulation {
   setup("set-up-new-pp-for-sa-budget-pp-journey", "SA-Budget PP-Set Up new Payment Plan Journey") withRequests
     (
       navigateToAuth, authLogIn(""),
-      redirectToSplitter, navigateToYourDDIPage,
+      navigateToYourDDIPage,
       redirectToSABudgetPPDetailsPage, landOnSABudgetPPDetailsPage,
       redirectToSetUpANewPPPage,
       navigateToPaymentOptionPage, choosePaymentOption("sa"),

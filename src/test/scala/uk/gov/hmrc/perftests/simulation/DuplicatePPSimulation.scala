@@ -20,39 +20,32 @@ import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
 import uk.gov.hmrc.perftests.requests.AmendPaymentPlanRequests._
 import uk.gov.hmrc.perftests.requests.AuthLoginRequests.{authLogIn, navigateToAuth}
 import uk.gov.hmrc.perftests.requests.PaymentAmountRequests.{enterRegularPaymentAmount, navigateToRegularPaymentAmountPage}
-import uk.gov.hmrc.perftests.requests.PaymentCYARequests.{navigateToDDCYAPage, submitDDDetails}
+import uk.gov.hmrc.perftests.requests.PaymentCYARequests.{navigateToDDCYAPage, navigateToDDDupeCYAPage, submitDDDetails}
 import uk.gov.hmrc.perftests.requests.PaymentConfirmationRequests.navigateToDDConfirmationPage
 import uk.gov.hmrc.perftests.requests.PaymentPlanRequests.{addPaymentPlanEndDate, choosePaymentPlan, enterPaymentPlanEndDate, enterPaymentPlanStartDate, landOnSABudgetPPDetailsPage, navigateToAddPaymentPlanEndDate, navigateToBudgetPaymentPlanEndDatePage, navigateToPaymentPlanPage, navigateToPaymentPlanStartDatePage, redirectToSABudgetPPDetailsPage, redirectToSetUpANewPPPage}
 import uk.gov.hmrc.perftests.requests.PaymentReferenceRequests.{enterPaymentRefNumber, navigateToPaymentReferencePage}
 import uk.gov.hmrc.perftests.requests.PaymentTypeRequests.{choosePaymentOption, navigateToPaymentOptionPage}
 import uk.gov.hmrc.perftests.requests.SelectPaymentFrequencyRequests.{navigateToPaymentFrequencyPage, selectFrequency}
-import uk.gov.hmrc.perftests.requests.SetupDDRequests.{mgdPaymentRef, navigateToYourDDIPage, redirectToSplitter, saPaymentRef}
+import uk.gov.hmrc.perftests.requests.SetupDDRequests.{mgdPaymentRef, navigateToYourDDIPage, saPaymentRef}
 
-trait SADuplicatePPSimulation {
+trait DuplicatePPSimulation {
   this: PerformanceTestRunner =>
   setup("duplicate-payment-plan-journey-DW1", "DW1-Duplicate Payment Plan Journey") withRequests
     (
-      navigateToAuth, authLogIn("0000000009000205"),
-      redirectToSplitter, navigateToYourDDIPage,
-      redirectToSABudgetPPDetailsPage,
-      landOnSABudgetPPDetailsPage,
-      redirectToSetUpANewPPPage,
-      navigateToPaymentOptionPage, choosePaymentOption("sa"),
-      navigateToPaymentPlanPage, choosePaymentPlan("budgetPaymentPlan"),
-      navigateToPaymentReferencePage, enterPaymentRefNumber(saPaymentRef),
-      navigateToPaymentFrequencyPage, selectFrequency("monthly"),
-      navigateToRegularPaymentAmountPage, enterRegularPaymentAmount,
-      navigateToPaymentPlanStartDatePage, enterPaymentPlanStartDate,
-      navigateToAddPaymentPlanEndDate, addPaymentPlanEndDate,
-      navigateToBudgetPaymentPlanEndDatePage, enterPaymentPlanEndDate,
-      navigateToDDCYAPage, submitDDDetails,
+      navigateToAuth, authLogIn("0000000009000204"),
+      navigateToYourDDIPage,
+      redirectToSABudgetPPDetailsPage, landOnSABudgetPPDetailsPage,
+      redirectToSABudgetPPRefPage, landOnSABudgetPPRefPage,
+      navigateToAmendPaymentPlanPage,
+      navigateToAmendAmountPage,
+      navigateToCheckAmendingDetailsPage, submitAmendPaymentPlanDetails,
       navigateToExistingPPQpage, submitExistingPPDetailS,
-      navigateToDDConfirmationPage
+      navigateToPaymentPlanConfirmPage
     )
   setup("duplicate-payment-plan-journey-DW2", "DW2-Duplicate Payment Plan Journey") withRequests
     (
       navigateToAuth, authLogIn("0000000009000204"),
-      redirectToSplitter, navigateToYourDDIPage,
+      navigateToYourDDIPage,
       redirectToSABudgetPPDetailsPage,
       landOnSABudgetPPDetailsPage,
       redirectToSetUpANewPPPage,
@@ -60,7 +53,7 @@ trait SADuplicatePPSimulation {
       navigateToPaymentPlanPage, choosePaymentPlan("variablePaymentPlan"),
       navigateToPaymentReferencePage, enterPaymentRefNumber(mgdPaymentRef),
       navigateToPaymentPlanStartDatePage, enterPaymentPlanStartDate,
-      navigateToDDCYAPage, submitDDDetails,
+      navigateToDDDupeCYAPage, submitDDDetails,
       navigateToDW2Page
     )
 }

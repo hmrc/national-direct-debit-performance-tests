@@ -37,7 +37,7 @@ trait SASetupDirectDebitSimulation {
   setup("setup-direct-debit-journey-sa-singlePPlan", "SA-Single Payment Plan-Setup DD Journey") withRequests
     (
       navigateToAuth, authLogIn(""),
-      redirectToSplitter, navigateToYourDDIPage,
+      navigateToYourDDIPage,
       navigateToSetupDDPage,
       navigateToSelectAccountPage, submitAccountType,
       navigateToBankAccountPage, enterBankAccountDetails(name, sortCode, accountNumber),
@@ -55,7 +55,7 @@ trait SASetupDirectDebitSimulation {
   setup("setup-direct-debit-journey-sa-budgetPPlan", "SA-Budget Payment Plan-Setup DD Journey") withRequests
     (
       navigateToAuth, authLogIn(""),
-      redirectToSplitter, navigateToYourDDIPage,
+      navigateToYourDDIPage,
       navigateToSetupDDPage,
       navigateToSelectAccountPage, submitAccountType,
       navigateToBankAccountPage, enterBankAccountDetails(name, sortCode, accountNumber),

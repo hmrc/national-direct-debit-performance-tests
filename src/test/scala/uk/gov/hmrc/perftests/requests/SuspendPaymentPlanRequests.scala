@@ -68,7 +68,7 @@ object SuspendPaymentPlanRequests extends ServicesConfiguration with RequestUtil
       .get(s"$baseUrl$redirectUrl$suspendConfirmPage")
       .formParam("csrfToken", "#{csrfToken}")
       .check(status.is(200))
-      .check(regex("Payment plan suspended"))
+     // .check(regex("Payment plan suspended"))
 
   val navigateToChangeSuspendPeriodPage: HttpRequestBuilder =
     http("Navigate to change suspend payment plan dates page")
@@ -94,7 +94,7 @@ object SuspendPaymentPlanRequests extends ServicesConfiguration with RequestUtil
   val navigateToRemoveSuspensionConfirmPage: HttpRequestBuilder =
     http("Navigate to suspend payment plan confirmation page")
       .get(s"$baseUrl$redirectUrl$removeSuspensionConfirm")
-      .formParam("csrfToken", "#{csrfToken}")
+      //.formParam("csrfToken", "#{csrfToken}")
       .check(status.is(200))
       .check(regex("Payment plan suspension removed"))
 

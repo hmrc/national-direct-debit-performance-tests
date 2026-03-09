@@ -27,11 +27,9 @@ trait SAAmendPaymentSimulation {
   setup("amend-payment-plan-journey-sa-budgetPPlan", "SA-Budget Payment Plan-Amend PP Journey") withRequests
     (
       navigateToAuth, authLogIn("2b6"),
-      redirectToSplitter, navigateToYourDDIPage,
-      redirectToSABudgetPPDetailsPage,
-      landOnSABudgetPPDetailsPage,
+      navigateToYourDDIPage,
+      redirectToSABudgetPPDetailsPage, landOnSABudgetPPDetailsPage,
       redirectToSABudgetPPRefPage, landOnSABudgetPPRefPage,
-      navigateToAmendPaymentPlanPage,
       navigateToAmendRegularAmountPage, enterAmendRegularPaymentAmount,
       navigateToCheckAmendingDetailsPage,
       navigateToPaymentPlanEndDatePage, submitPaymentPlanEndDate,
