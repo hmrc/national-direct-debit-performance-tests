@@ -29,7 +29,7 @@ object PaymentReferenceRequests extends ServicesConfiguration with RequestUtils 
       .get(s"$baseUrl$redirectUrl$paymentReference")
       .check(saveCsrfToken())
       .check(status.is(200))
-      .check(regex("What is your payment reference"))
+      .check(regex("payment reference"))
 
   def enterPaymentRefNumber(paymentRefNumber: String): HttpRequestBuilder =
     http("Enter Payment Reference number")

@@ -28,26 +28,19 @@ import uk.gov.hmrc.perftests.requests.PaymentTypeRequests.{choosePaymentOption, 
 import uk.gov.hmrc.perftests.requests.SelectPaymentFrequencyRequests.{navigateToPaymentFrequencyPage, selectFrequency}
 import uk.gov.hmrc.perftests.requests.SetupDDRequests.{mgdPaymentRef, navigateToYourDDIPage, saPaymentRef}
 
-trait SADuplicatePPSimulation {
+trait DuplicatePPSimulation {
   this: PerformanceTestRunner =>
   setup("duplicate-payment-plan-journey-DW1", "DW1-Duplicate Payment Plan Journey") withRequests
     (
-      navigateToAuth, authLogIn("0000000009000205"),
+      navigateToAuth, authLogIn("0000000009000204"),
       navigateToYourDDIPage,
-      redirectToSABudgetPPDetailsPage,
-      landOnSABudgetPPDetailsPage,
-      redirectToSetUpANewPPPage,
-      navigateToPaymentOptionPage, choosePaymentOption("sa"),
-      navigateToPaymentPlanPage, choosePaymentPlan("budgetPaymentPlan"),
-      navigateToPaymentReferencePage, enterPaymentRefNumber(saPaymentRef),
-      navigateToPaymentFrequencyPage, selectFrequency("monthly"),
-      navigateToRegularPaymentAmountPage, enterRegularPaymentAmount,
-      navigateToPaymentPlanStartDatePage, enterPaymentPlanStartDate,
-      navigateToAddPaymentPlanEndDate, addPaymentPlanEndDate,
-      navigateToBudgetPaymentPlanEndDatePage, enterPaymentPlanEndDate,
-      navigateToDDDupeCYAPage, submitDDDetails,
+      redirectToSABudgetPPDetailsPage, landOnSABudgetPPDetailsPage,
+      redirectToSABudgetPPRefPage, landOnSABudgetPPRefPage,
+      navigateToAmendPaymentPlanPage,
+      navigateToAmendAmountPage,
+      navigateToCheckAmendingDetailsPage, submitAmendPaymentPlanDetails,
       navigateToExistingPPQpage, submitExistingPPDetailS,
-      navigateToDDConfirmationPage
+      navigateToPaymentPlanConfirmPage
     )
   setup("duplicate-payment-plan-journey-DW2", "DW2-Duplicate Payment Plan Journey") withRequests
     (

@@ -216,6 +216,7 @@ object AmendPaymentPlanRequests extends ServicesConfiguration with RequestUtils 
     http("Navigate to amend amount page")
       .get(s"$baseUrl$redirectUrl$howMuchDoYouWantToPay")
       .check(saveCsrfToken())
+      .formParam("value",150)
       .check(status.is(200))
 
   val enterAmendPaymentAmount: HttpRequestBuilder =
