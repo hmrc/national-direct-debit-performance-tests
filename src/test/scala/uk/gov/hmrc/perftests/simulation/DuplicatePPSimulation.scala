@@ -19,14 +19,11 @@ package uk.gov.hmrc.perftests.simulation
 import uk.gov.hmrc.performance.simulation.PerformanceTestRunner
 import uk.gov.hmrc.perftests.requests.AmendPaymentPlanRequests._
 import uk.gov.hmrc.perftests.requests.AuthLoginRequests.{authLogIn, navigateToAuth}
-import uk.gov.hmrc.perftests.requests.PaymentAmountRequests.{enterRegularPaymentAmount, navigateToRegularPaymentAmountPage}
-import uk.gov.hmrc.perftests.requests.PaymentCYARequests.{navigateToDDCYAPage, navigateToDDDupeCYAPage, submitDDDetails}
-import uk.gov.hmrc.perftests.requests.PaymentConfirmationRequests.navigateToDDConfirmationPage
-import uk.gov.hmrc.perftests.requests.PaymentPlanRequests.{addPaymentPlanEndDate, choosePaymentPlan, enterPaymentPlanEndDate, enterPaymentPlanStartDate, landOnSABudgetPPDetailsPage, navigateToAddPaymentPlanEndDate, navigateToBudgetPaymentPlanEndDatePage, navigateToPaymentPlanPage, navigateToPaymentPlanStartDatePage, redirectToSABudgetPPDetailsPage, redirectToSetUpANewPPPage}
+import uk.gov.hmrc.perftests.requests.PaymentCYARequests.{navigateToDDDupeCYAPage, submitDDDetails}
+import uk.gov.hmrc.perftests.requests.PaymentPlanRequests._
 import uk.gov.hmrc.perftests.requests.PaymentReferenceRequests.{enterPaymentRefNumber, navigateToPaymentReferencePage}
 import uk.gov.hmrc.perftests.requests.PaymentTypeRequests.{choosePaymentOption, navigateToPaymentOptionPage}
-import uk.gov.hmrc.perftests.requests.SelectPaymentFrequencyRequests.{navigateToPaymentFrequencyPage, selectFrequency}
-import uk.gov.hmrc.perftests.requests.SetupDDRequests.{mgdPaymentRef, navigateToYourDDIPage, saPaymentRef}
+import uk.gov.hmrc.perftests.requests.SetupDDRequests.{mgdPaymentRef, navigateToYourDDIPage}
 
 trait DuplicatePPSimulation {
   this: PerformanceTestRunner =>

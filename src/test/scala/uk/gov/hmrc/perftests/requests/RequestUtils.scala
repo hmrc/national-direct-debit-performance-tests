@@ -20,6 +20,7 @@ import io.gatling.core.Predef._
 import io.gatling.core.check.CheckBuilder
 import io.gatling.core.check.regex.RegexCheckType
 import uk.gov.hmrc.perftests.requests.SetupDDRequests.baseUrlFor
+
 import java.time.LocalDate
 import scala.util.Random
 
