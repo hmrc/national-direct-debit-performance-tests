@@ -95,18 +95,6 @@ object AmendPaymentPlanRequests extends ServicesConfiguration with RequestUtils 
       .formParam("value.year", year)
       .check(status.is(303))
 
-//  val navigateToExistingPaymentPlanCYAPage: HttpRequestBuilder =
-//    http("Navigate to existing payment plan CYA page")
-//      .get(s"$baseUrl$redirectUrl$confirmExistingPayment")
-//      .check(status.is(200))
-//      .check(regex("Confirm new payment plan details"))
-//
-//  val navigateToAmendAEndDatePage: HttpRequestBuilder =
-//    http("Navigate to amend payment plan end date page")
-//      .get(s"$baseUrl$redirectUrl$amendEndDate")
-//      .check(status.is(200))
-//      .check(regex("What date are you ending this payment plan?"))
-
   val submitPaymentPlanDetails: HttpRequestBuilder =
     http("Enter payment plan details")
       .post(s"$baseUrl$redirectUrl$paymentPlanCYAPage")

@@ -40,7 +40,6 @@ object PaymentPlanRequests extends ServicesConfiguration with RequestUtils {
   val redirectToSABudgetPPDetailsPage: HttpRequestBuilder =
     http("Redirect to payment plan details page")
       .get(s"$baseUrl$redirectUrl$saBudgetPaymentPlan")
-      //.formParam("directDebitReference", "99055021")
       .check(status.is(303))
 
   val landOnSABudgetPPDetailsPage: HttpRequestBuilder =
@@ -98,6 +97,5 @@ object PaymentPlanRequests extends ServicesConfiguration with RequestUtils {
   val redirectToSetUpANewPPPage: HttpRequestBuilder =
     http("Redirect to set up a new payment plan page")
       .get(s"$baseUrl$redirectUrl$setupPaymentPlan")
-     // .formParam("directDebitReference", "99055021")
       .check(status.is(303))
 }
